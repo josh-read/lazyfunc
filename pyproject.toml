@@ -16,7 +16,9 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dynamic = ["version"]
 
 [project.urls]
 "Homepage" = "https://github.com/josh-read/mfunc"
 "Bug Tracker" = "https://github.com/josh-read/mfunc/issues"
+[tool]
