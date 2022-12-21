@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mfunc"
+version = "0.0.1"
+authors = [
+  { name="Josh Read", email="joshua-read@hotmail.co.uk" },
+]
+description = "Wrapper class around Python functions allowing mathematical operations, as if they'd already been evaluated."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/josh-read/mfunc"
+"Bug Tracker" = "https://github.com/josh-read/mfunc/issues"
