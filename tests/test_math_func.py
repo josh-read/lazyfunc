@@ -16,6 +16,8 @@ class G:
 def test_repr():
     mf_f = MathFunc(f)
     assert str(mf_f) == 'MathFunc(f)'
+    mf_f_with_desc = MathFunc(f, description='my_function')
+    assert str(mf_f_with_desc) == 'MathFunc(my_function)'
     mf_g = MathFunc(G())
     assert str(mf_g) == 'MathFunc(G)'
 
