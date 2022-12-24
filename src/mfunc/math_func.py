@@ -15,6 +15,10 @@ def add_parentheses(s):
 
 class MathFunc:
 
+    __add__ = lambda s, o: MathFunc.math_operation(s, o, operator.add, '+', True)
+    __mul__ = lambda s, o: MathFunc.math_operation(s, o, operator.mul, '*', True)
+    __truediv__ = lambda s, o: MathFunc.math_operation(s, o, operator.truediv, '/', False)
+
     def __init__(self, func, *args, description=None, **kwargs):
         self.func = func
         self.args = args
@@ -61,20 +65,7 @@ class MathFunc:
 
         return ' '.join((self_desc, operation_symbol, other_desc))
 
-    def __add__(self, other):
-        """Add self to a scalar value or any other callable including another MathFunc instance."""
-        new_func = self.new_func_from_operation(other, operator.add)
-        new_desc = self.new_description_from_operation(other, '+', commutative=True)
-        return MathFunc(func=new_func, description=new_desc)
-
-    def __mul__(self, other):
-        """Multiply self with a scalar value or any other callable including another MathFunc instance."""
-        new_func = self.new_func_from_operation(other, operator.mul)
-        new_desc = self.new_description_from_operation(other, '*', commutative=True)
-        return MathFunc(func=new_func, description=new_desc)
-
-    def __truediv__(self, other):
-        """Multiply self with a scalar value or any other callable including another MathFunc instance."""
-        new_func = self.new_func_from_operation(other, operator.truediv)
-        new_desc = self.new_description_from_operation(other, '/', commutative=False)
+    def math_operation(self, other, operation, operation_symbol, commutative):
+        new_func = self.new_func_from_operation(other, operation)
+        new_desc = self.new_description_from_operation(other, operation_symbol, commutative)
         return MathFunc(func=new_func, description=new_desc)
