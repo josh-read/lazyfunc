@@ -33,19 +33,22 @@ def new_description_from_operation(self, other, operation_symbol, commutative):
     return ' '.join((self_desc, operation_symbol, other_desc))
 
 
-def math_operation(operation, operation_symbol, commutative):
+def math_operation(operation_name, operation, operation_symbol, commutative):
     def inner(self, other):
         new_func = new_func_from_operation(self, other, operation)
         new_desc = new_description_from_operation(self, other, operation_symbol, commutative)
         return MathFunc(func=new_func, description=new_desc)
+    inner.__name__ = operation_name
+    inner.__doc__ = f'Return new MathFunc with unevaluated function resulting from self {operation_symbol} other, ' \
+                    f'where other may be a scalar value or any other callable including another MathFunc instance.'
     return inner
 
 
 class MathFunc:
 
-    __add__ = math_operation(operator.add, '+', True)
-    __mul__ = math_operation(operator.mul, '*', True)
-    __truediv__ = math_operation(operator.truediv, '/', False)
+    __add__ = math_operation('__add__', operator.add, '+', True)
+    __mul__ = math_operation('__mul__', operator.mul, '*', True)
+    __truediv__ = math_operation('__truediv__', operator.truediv, '/', False)
 
     def __init__(self, func, *args, description=None, **kwargs):
         self.func = func

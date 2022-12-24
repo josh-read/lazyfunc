@@ -62,6 +62,9 @@ def test_mul():
     assert np.allclose(mf_f2(x), 2*x)
     with pytest.raises(TypeError):
         mf_f * 'foo'
+    # test MathFunc operation name and docstring
+    assert MathFunc.__mul__.__name__ == '__mul__'
+    assert MathFunc.__mul__.__doc__ == 'Return new MathFunc with unevaluated function resulting from self * other, where other may be a scalar value or any other callable including another MathFunc instance.'
 
 
 def test_add():
