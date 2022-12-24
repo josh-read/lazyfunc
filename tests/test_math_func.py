@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from mfunc import MathFunc
+from mfunc import MathFunc, math_func
 
 
 def f(x):
@@ -22,6 +22,11 @@ class J:
 
     def __call__(self, x, y):
         return x + y
+
+
+@math_func
+def k(x):
+    return 3 * x
 
 
 def test_repr():
@@ -99,3 +104,7 @@ def test_truediv():
     expected_str2 = 'MathFunc((f + f) / (f + 2))'
     assert np.allclose(tricky_eq2(x), (x + x) / (x + 2))
     assert str(tricky_eq2) == expected_str2
+
+
+def test_decorated_function():
+    assert (k + f)(1) == 4

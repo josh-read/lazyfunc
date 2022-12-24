@@ -68,3 +68,7 @@ class MathFunc:
 
     def __call__(self, *x):
         return self.func(*x, *self.args, **self.kwargs)
+
+
+def math_func(func):
+    return MathFunc(func)
