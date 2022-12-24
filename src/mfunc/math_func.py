@@ -66,3 +66,25 @@ class MathFunc:
             new_desc = self.description + ' * ' + str(other)
 
         return MathFunc(func=new_func, description=new_desc)
+
+    def __truediv__(self, other):
+        """Multiply self with a scalar value or any other callable including another MathFunc instance."""
+        if callable(other):
+            new_func = lambda *x: self(*x) / other(*x)
+        elif isinstance(other, numbers.Real):
+            new_func = lambda *x: self(*x) / other
+        else:
+            msg = f"Cannot divide MathFunc with type {type(other)}. Must be either callable or a scalar value."
+            raise TypeError(msg)
+
+        # Adding brackets around each operand is the only way to ensure correctness with the current implementation.
+        # However, it is not desirable as it produces a bunch of unnecessary brackets. This problem can be alleviated
+        # if this function had knowledge of all previous operations.
+        if isinstance(other, MathFunc):
+            new_desc = '(' + self.description + ') / (' + other.description + ')'
+        elif callable(other):
+            new_desc = '(' + self.description + ') / (' + callable_name(other) + ')'
+        else:
+            new_desc = '(' + self.description + ') / (' + str(other) + ')'
+
+        return MathFunc(func=new_func, description=new_desc)

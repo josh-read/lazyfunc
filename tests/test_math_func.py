@@ -86,13 +86,13 @@ def test_add():
 
 
 def test_truediv():
-    x = np.random.rand(4)
+    x = 1
     mf_f = MathFunc(f)
     tricky_eq1 = mf_f + mf_f / (mf_f + 2)
-    expected_str1 = 'f + f / (f + 2)'
+    expected_str1 = 'MathFunc(f + (f) / (f + 2))'
+    assert np.allclose(tricky_eq1(x), x + x / (x + 2))
     assert str(tricky_eq1) == expected_str1
-    assert tricky_eq1(x) == x + x / (x + 2)
     tricky_eq2 = (mf_f + mf_f) / (mf_f + 2)
-    expected_str2 = '(f + f) / (f + 2)'
+    expected_str2 = 'MathFunc((f + f) / (f + 2))'
+    assert np.allclose(tricky_eq2(x), (x + x) / (x + 2))
     assert str(tricky_eq2) == expected_str2
-    assert tricky_eq1(x) == (x + x) / (x + 2)
