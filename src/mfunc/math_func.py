@@ -36,7 +36,7 @@ class MathFunc:
         elif isinstance(other, numbers.Real):
             new_func = lambda *x: self(*x) + other
         else:
-            msg = f"Cannot multiply MathFunc with type {type(other)}. Must be either callable or a scalar value."
+            msg = f"Cannot add MathFunc to type {type(other)}. Must be either callable or a scalar value."
             raise TypeError(msg)
 
         if isinstance(other, MathFunc):
