@@ -62,3 +62,24 @@ def test_mul():
     assert np.allclose(mf_f2(x), 2*x)
     with pytest.raises(TypeError):
         mf_f * 'foo'
+
+
+def test_add():
+    # test two MathFunc objects
+    x = np.random.rand(4)
+    mf_f = MathFunc(f)
+    mf_h = MathFunc(H())
+    mf_fh = mf_f + mf_h
+    assert str(mf_fh) == 'MathFunc(f + H)'
+    assert np.allclose(mf_fh(x), 2*x)
+    # test a MathFunc object with a normal function
+    mf_g = MathFunc(g)
+    mf_gj = mf_g + J()
+    assert str(mf_gj) == 'MathFunc(g + J)'
+    assert np.allclose(mf_gj(x, x), 4*x)
+    # test a MathFunc object with a scalar
+    mf_f2 = mf_f + 2
+    assert str(mf_f2) == 'MathFunc(f + 2)'
+    assert np.allclose(mf_f2(x), x + 2)
+    with pytest.raises(TypeError):
+        mf_f + 'foo'
