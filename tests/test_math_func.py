@@ -97,7 +97,7 @@ def test_truediv():
     x = 1
     mf_f = MathFunc(f)
     tricky_eq1 = mf_f + mf_f / (mf_f + 2)
-    expected_str1 = 'MathFunc(f + (f) / (f + 2))'
+    expected_str1 = 'MathFunc(f + f / (f + 2))'
     assert np.allclose(tricky_eq1(x), x + x / (x + 2))
     assert str(tricky_eq1) == expected_str1
     tricky_eq2 = (mf_f + mf_f) / (mf_f + 2)

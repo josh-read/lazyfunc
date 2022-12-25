@@ -15,7 +15,7 @@ def new_func_from_operation(self, other, operation):
         raise TypeError(msg)
 
 
-def new_description_from_operation(self, other, operation_symbol, commutative):
+def new_description_from_operation(self, other, operation_symbol, rank):
     self_desc = self.description
     if isinstance(other, MathFunc):
         other_desc = other.description
@@ -24,20 +24,26 @@ def new_description_from_operation(self, other, operation_symbol, commutative):
     else:
         other_desc = str(other)
 
-    if not commutative:
-        # Adding brackets around each operand is the only way to ensure correctness with the current implementation.
-        # However, it is not desirable as it produces a bunch of unnecessary brackets. This problem can be alleviated
-        # if this function had knowledge of all previous operations.
-        self_desc, other_desc = [add_parentheses(desc) for desc in (self_desc, other_desc)]
+    self_rank = getattr(self, 'rank', None)
+    if self_rank is None:
+        pass
+    elif self_rank < rank:
+        self_desc = add_parentheses(self_desc)
+
+    other_rank = getattr(other, 'rank', None)
+    if other_rank is None:
+        pass
+    elif other_rank < rank:
+        other_desc = add_parentheses(other_desc)
 
     return ' '.join((self_desc, operation_symbol, other_desc))
 
 
-def math_operation(operation_name, operation, operation_symbol, commutative):
+def math_operation(operation_name, operation, operation_symbol, rank):
     def inner(self, other):
         new_func = new_func_from_operation(self, other, operation)
-        new_desc = new_description_from_operation(self, other, operation_symbol, commutative)
-        return MathFunc(func=new_func, description=new_desc)
+        new_desc = new_description_from_operation(self, other, operation_symbol, rank)
+        return MathFunc(func=new_func, description=new_desc, rank=rank)
     inner.__name__ = operation_name
     inner.__doc__ = f'Return new MathFunc with unevaluated function resulting from self {operation_symbol} other, ' \
                     f'where other may be a scalar value or any other callable including another MathFunc instance.'
@@ -46,15 +52,16 @@ def math_operation(operation_name, operation, operation_symbol, commutative):
 
 class MathFunc:
 
-    __add__ = math_operation('__add__', operator.add, '+', True)
-    __mul__ = math_operation('__mul__', operator.mul, '*', True)
-    __truediv__ = math_operation('__truediv__', operator.truediv, '/', False)
+    __add__ = math_operation('__add__', operator.add, '+', 1)
+    __mul__ = math_operation('__mul__', operator.mul, '*', 2)
+    __truediv__ = math_operation('__truediv__', operator.truediv, '/', 2)
 
-    def __init__(self, func, *args, description=None, **kwargs):
+    def __init__(self, func, *args, description=None, rank=None, **kwargs):
         self.func = func
         self.args = args
         self.kwargs = kwargs
         self._description = description
+        self.rank = rank
 
     @property
     def description(self):
