@@ -31,6 +31,10 @@ def test_equations():
     assert str(eq) == 'MathFunc(two + (one + one) / two + three)'
     assert eq(None) == 2 + (1 + 1) / 2 + 3
     # brackets different rank
-    # eq = (two + (one + one) / two + three) ** two
-    # assert str(eq) == 'MathFunc((two + (one + one) / two + three) ** two)'
-    # assert eq(None) == (2 + (1 + 1) / 2 + 3) ** 2
+    eq = (two + (one + one) / two + three) ** two
+    assert str(eq) == 'MathFunc((two + (one + one) / two + three) ** two)'
+    assert eq(None) == (2 + (1 + 1) / 2 + 3) ** 2
+    # test bracketing for ascending then descending rank
+    eq = ((one + one) * two / two) ** (three / one) + one
+    assert str(eq) == 'MathFunc(((one + one) * two / two) ** (three / one) + one)'
+    assert eq(None) == ((1 + 1) * 2 / 2) ** (3 / 1) + 1

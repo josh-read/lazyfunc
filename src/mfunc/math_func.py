@@ -53,8 +53,10 @@ def math_operation(operation_name, operation, operation_symbol, rank):
 class MathFunc:
 
     __add__ = math_operation('__add__', operator.add, '+', 1)
+    __sub__ = math_operation('__sub__', operator.sub, '-', 1)
     __mul__ = math_operation('__mul__', operator.mul, '*', 2)
     __truediv__ = math_operation('__truediv__', operator.truediv, '/', 2)
+    __pow__ = math_operation('__pow__', operator.pow, '**', 3)
 
     def __init__(self, func, *args, description=None, rank=None, **kwargs):
         self.func = func
