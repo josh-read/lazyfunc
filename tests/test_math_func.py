@@ -24,7 +24,7 @@ class J:
         return x + y
 
 
-@math_func
+@MathFunc
 def k(x):
     return 3 * x
 

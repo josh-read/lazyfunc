@@ -89,9 +89,3 @@ class MathFunc:
 
     def __call__(self, *x):
         return self.func(*x, *self.args, **self.kwargs)
-
-
-def math_func(func):
-    """Intended to be used as a decorator to turn functions with no args or
-    kwargs into a MathFunc."""
-    return MathFunc(func)

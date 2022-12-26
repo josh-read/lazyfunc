@@ -1,17 +1,17 @@
 from mfunc import *
 
 
-@math_func
+@MathFunc
 def one(x):
     return 1
 
 
-@math_func
+@MathFunc
 def two(x):
     return 2
 
 
-@math_func
+@MathFunc
 def three(x):
     return 3
 
