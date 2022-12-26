@@ -5,6 +5,8 @@ from mfunc.utils import callable_name, add_parentheses
 
 
 def new_func_from_operation(self, other, operation):
+    """Returns a function by combining self and other through a specified operation.
+    Self must be of type MathFunc, other may be a scalar value or any callable including MathFunc"""
     if callable(other):
         return lambda *x: operation(self(*x), other(*x))
     elif isinstance(other, numbers.Real):
@@ -16,6 +18,9 @@ def new_func_from_operation(self, other, operation):
 
 
 def new_description_from_operation(self, other, operation_symbol, rank):
+    """Returns a string describing the function resulting from combining self and other through
+    the specified operation. The rank of the operation is compared to the rank of the last operation
+    on self and other to determine whether parentheses are required."""
     self_desc = self.description
     if isinstance(other, MathFunc):
         other_desc = other.description
@@ -30,7 +35,7 @@ def new_description_from_operation(self, other, operation_symbol, rank):
     elif self_rank < rank:
         self_desc = add_parentheses(self_desc)
 
-    other_rank = getattr(other, 'rank', None)
+    other_rank = getattr(other, 'rank', None)  # if other is not a MathFunc, it will not have a rank attribute
     if other_rank is None:
         pass
     elif other_rank < rank:
@@ -40,6 +45,8 @@ def new_description_from_operation(self, other, operation_symbol, rank):
 
 
 def math_operation(operation_name, operation, operation_symbol, rank):
+    """Function generator which produces the functions for arithmetic operations which are bound
+    to MathFunc."""
     def inner(self, other):
         new_func = new_func_from_operation(self, other, operation)
         new_desc = new_description_from_operation(self, other, operation_symbol, rank)
@@ -51,6 +58,8 @@ def math_operation(operation_name, operation, operation_symbol, rank):
 
 
 class MathFunc:
+    """Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,
+    including MathFunc instances."""
 
     __add__ = math_operation('__add__', operator.add, '+', 1)
     __sub__ = math_operation('__sub__', operator.sub, '-', 1)
@@ -67,6 +76,9 @@ class MathFunc:
 
     @property
     def description(self):
+        """Description of the function wrapped by the MathFunc. This information is presented in the
+        __repr__. This defaults to the __name__ of the wrapped function, or can be set through the
+        description keyword argument. The description is also updated by arithmetic operations are applied."""
         if self._description is None:
             return callable_name(self.func)
         else:
@@ -80,4 +92,6 @@ class MathFunc:
 
 
 def math_func(func):
+    """Intended to be used as a decorator to turn functions with no args or
+    kwargs into a MathFunc."""
     return MathFunc(func)
