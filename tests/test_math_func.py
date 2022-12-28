@@ -93,6 +93,27 @@ def test_add():
         mf_f + 'foo'
 
 
+def test_radd():
+    # test two MathFunc objects
+    x = np.random.rand(4)
+    mf_f = MathFunc(f)
+    mf_h = MathFunc(H())
+    mf_fh = mf_f + mf_h
+    assert str(mf_fh) == 'MathFunc(f + H)'
+    assert np.allclose(mf_fh(x), 2*x)
+    # test a MathFunc object with a normal function
+    mf_g = MathFunc(g)
+    mf_jg = J() + mf_g
+    assert str(mf_jg) == 'MathFunc(J + g)'
+    assert np.allclose(mf_jg(x, x), 4*x)
+    # test a MathFunc object with a scalar
+    mf_2f = 2 + mf_f
+    assert str(mf_2f) == 'MathFunc(2 + f)'
+    assert np.allclose(mf_2f(x), x + 2)
+    with pytest.raises(TypeError):
+        mf_f + 'foo'
+
+
 def test_truediv():
     x = 1
     mf_f = MathFunc(f)

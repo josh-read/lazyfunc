@@ -17,7 +17,7 @@ def new_func_from_operation(self, other, operation):
         raise TypeError(msg)
 
 
-def new_description_from_operation(self, other, operation_symbol, rank):
+def new_description_from_operation(self, other, operation_symbol, rank, reverse):
     """Returns a string describing the function resulting from combining self and other through
     the specified operation. The rank of the operation is compared to the rank of the last operation
     on self and other to determine whether parentheses are required."""
@@ -41,15 +41,18 @@ def new_description_from_operation(self, other, operation_symbol, rank):
     elif other_rank < rank:
         other_desc = add_parentheses(other_desc)
 
-    return ' '.join((self_desc, operation_symbol, other_desc))
+    if reverse:
+        return ' '.join((other_desc, operation_symbol, self_desc))
+    else:
+        return ' '.join((self_desc, operation_symbol, other_desc))
 
 
-def math_operation(operation_name, operation, operation_symbol, rank):
+def math_operation(operation_name, operation, operation_symbol, rank, reverse=False):
     """Function generator which produces the functions for arithmetic operations which are bound
     to MathFunc."""
     def inner(self, other):
         new_func = new_func_from_operation(self, other, operation)
-        new_desc = new_description_from_operation(self, other, operation_symbol, rank)
+        new_desc = new_description_from_operation(self, other, operation_symbol, rank, reverse)
         return MathFunc(func=new_func, description=new_desc, rank=rank)
     inner.__name__ = operation_name
     inner.__doc__ = f'Return new MathFunc with unevaluated function resulting from self {operation_symbol} other, ' \
@@ -62,6 +65,7 @@ class MathFunc:
     including MathFunc instances."""
 
     __add__ = math_operation('__add__', operator.add, '+', 1)
+    __radd__ = math_operation('__add__', operator.add, '+', 1, reverse=True)
     __sub__ = math_operation('__sub__', operator.sub, '-', 1)
     __mul__ = math_operation('__mul__', operator.mul, '*', 2)
     __truediv__ = math_operation('__truediv__', operator.truediv, '/', 2)
