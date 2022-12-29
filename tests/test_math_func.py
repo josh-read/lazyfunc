@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from mfunc import MathFunc, math_func
+from mfunc import MathFunc
 
 
 def f(x):
