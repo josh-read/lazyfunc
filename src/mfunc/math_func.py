@@ -56,8 +56,9 @@ def math_operation(operation_name, operation, operation_symbol, rank, reverse=Fa
         new_desc = new_description_from_operation(self, other, operation_symbol, rank, reverse)
         return MathFunc(func=new_func, description=new_desc, rank=rank)
     inner.__name__ = operation_name
-    inner.__doc__ = f'Return new MathFunc with unevaluated function resulting from self {operation_symbol} other, ' \
-                    f'where other may be a scalar value or any other callable including another MathFunc instance.'
+    inner.__doc__ = f"Return new MathFunc with unevaluated function resulting from {'other' if reverse else 'self'} " \
+                    f"{operation_symbol} {'self' if reverse else 'other'}, " \
+                    "where other may be a scalar value or any other callable including another MathFunc instance."
     return inner
 
 
