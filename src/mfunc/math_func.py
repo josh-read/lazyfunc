@@ -92,4 +92,6 @@ class MathFunc:
         return f"{self.__class__.__name__}({self.description})"
 
     def __call__(self, *x):
+        if all(callable(y) for y in x):
+            raise NotImplementedError  # this will produce a new MathFunc
         return self.func(*x, *self.args, **self.kwargs)
