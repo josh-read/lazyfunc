@@ -24,11 +24,6 @@ class MultiParameterClass:
         return x + y
 
 
-@MathFunc
-def decorated_math_func(x):
-    return 3 * x
-
-
 def test_repr():
     mf_f = MathFunc(single_parameter_function)
     assert str(mf_f) == 'MathFunc(single_parameter_function)'
@@ -116,7 +111,3 @@ def test_radd():
     assert np.allclose(mf_2f(x), x + 2)
     with pytest.raises(TypeError):
         mf_f + 'foo'
-
-
-def test_decorated_function():
-    assert (decorated_math_func + single_parameter_function)(1) == 4
