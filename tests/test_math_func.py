@@ -45,3 +45,13 @@ def test_call():
         mf = MathFunc(single_parameter_function)
         mf = mf(SingleParameterClass())
         assert mf(x) == x
+
+
+def test_equality():
+    mf_single_parameter_function = MathFunc(single_parameter_function)
+    mf_single_parameter_class = MathFunc(SingleParameterClass())
+    assert (mf_single_parameter_function + mf_single_parameter_class
+            == mf_single_parameter_function + mf_single_parameter_class)
+    with pytest.warns(UserWarning):
+        assert (mf_single_parameter_function + mf_single_parameter_class
+                != mf_single_parameter_class + mf_single_parameter_function)
