@@ -1,5 +1,6 @@
 import operator
 import numbers
+from warnings import warn
 
 from mfunc.utils import callable_name, add_parentheses
 
@@ -95,3 +96,16 @@ class MathFunc:
         if all(callable(y) for y in x):
             raise NotImplementedError  # this will produce a new MathFunc
         return self.func(*x, *self.args, **self.kwargs)
+
+    def __eq__(self, other):
+        try:
+            equal = self.description == other.description
+        except AttributeError:
+            msg = 'Can only compare a MathFunc instance with another MathFunc'
+            raise TypeError(msg)
+
+        if not equal:
+            msg = 'MathFunc descriptions found to be not equal though may still be equivalent.'
+            warn(msg)
+
+        return equal
