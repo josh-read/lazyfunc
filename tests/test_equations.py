@@ -1,7 +1,10 @@
-"""Test combining operations of different rank."""
+"""Test that combining operations of different rank returns the correct result and also has the
+correct placement of parentheses in the description."""
 
+import pytest
 
 from mfunc import *
+from mfunc.utils import add_parentheses
 
 
 @MathFunc
@@ -19,31 +22,18 @@ def three(x):
     return 3
 
 
-def test_equation_1():
-    eq = one + one / two
-    assert str(eq) == 'MathFunc(one + one / two)'
-    assert eq(None) == 1 + 1 / 2
-
-
-def test_equation_2():
-    eq = (one + one) / two
-    assert str(eq) == 'MathFunc((one + one) / two)'
-    assert eq(None) == (1 + 1) / 2
-
-
-def test_equation_3():
-    eq = two + (one + one) / two + three
-    assert str(eq) == 'MathFunc(two + (one + one) / two + three)'
-    assert eq(None) == 2 + (1 + 1) / 2 + 3
-
-
-def test_equation_4():
-    eq = (two + (one + one) / two + three) ** two
-    assert str(eq) == 'MathFunc((two + (one + one) / two + three) ** two)'
-    assert eq(None) == (2 + (1 + 1) / 2 + 3) ** 2
-
-
-def test_equation_5():
-    eq = ((one + one) * two / two) ** (three / one) + one
-    assert str(eq) == 'MathFunc(((one + one) * two / two) ** (three / one) + one)'
-    assert eq(None) == ((1 + 1) * 2 / 2) ** (3 / 1) + 1
+@pytest.mark.parametrize(
+    'equation',
+[
+    '1 + 1 / 2',
+    '(1 + 1) / 2',
+    '2 + (1 + 1) / 2 + 3',
+    '(2 + (1 + 1) / 2 + 3) ** 2',
+    '((1 + 1) * 2 / 2) ** (3 / 1) + 1',
+])
+def test_equation(equation):
+    equation_from_math_funcs = equation.replace('1', 'one').replace('2', 'two').replace('3', 'three')
+    mf = eval(equation_from_math_funcs)
+    mf_str = 'MathFunc' + add_parentheses(equation_from_math_funcs)
+    assert mf(None) == eval(equation)
+    assert str(mf) == mf_str
