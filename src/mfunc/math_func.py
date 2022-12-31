@@ -66,12 +66,13 @@ class MathFunc:
     """Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,
     including MathFunc instances."""
 
-    __add__ = math_operation('__add__', operator.add, '+', 1)
-    __radd__ = math_operation('__add__', operator.add, '+', 1, reverse=True)
-    __sub__ = math_operation('__sub__', operator.sub, '-', 1)
-    __mul__ = math_operation('__mul__', operator.mul, '*', 2)
-    __truediv__ = math_operation('__truediv__', operator.truediv, '/', 2)
-    __pow__ = math_operation('__pow__', operator.pow, '**', 3)
+    # rank taken from reference https://docs.python.org/3/reference/expressions.html#operator-precedence
+    __pow__ = math_operation('__pow__', operator.pow, '**', 15)
+    __mul__ = math_operation('__mul__', operator.mul, '*', 13)
+    __truediv__ = math_operation('__truediv__', operator.truediv, '/', 13)
+    __add__ = math_operation('__add__', operator.add, '+', 12)
+    __radd__ = math_operation('__add__', operator.add, '+', 12, reverse=True)
+    __sub__ = math_operation('__sub__', operator.sub, '-', 12)
 
     def __init__(self, func, *args, description=None, rank=None, **kwargs):
         self.func = func
