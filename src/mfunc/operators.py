@@ -27,14 +27,17 @@ class Operator:
         return operation_doc.replace('a', '{}').replace('b', '{}').replace('c', '{}')
 
 
-operators = []
+def has_dunder(name):
+    return name.startswith('__') and name.endswith('__')
 
 
-for func_name, _ in inspect.getmembers(operator, inspect.isbuiltin):
-    if func_name.startswith('__') and func_name.endswith('__'):
-        operators.append(Operator(name=func_name))
+def auto_generate_operators():
+    return [Operator(func_name)
+            for func_name, _ in inspect.getmembers(operator, inspect.isbuiltin)
+            if has_dunder(func_name)]
 
 
 if __name__ == '__main__':
+    operators = auto_generate_operators()
     for op in operators:
         print(f'{op.name}, {op.func}, {op.number_of_operands}, {op.operation_format_template}')
