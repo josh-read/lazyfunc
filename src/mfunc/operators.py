@@ -42,3 +42,11 @@ if __name__ == '__main__':
     operators = auto_generate_operators()
     for op in operators:
         print(f'{op.name}, {op.func}, {op.number_of_operands}, {op.operation_format_template}')
+else:
+    operators = [
+        Operator('__pow__', precedence=15),
+        Operator('__mul__', precedence=13),
+        Operator('__truediv__', precedence=13),
+        Operator('__add__', precedence=12),
+        Operator('__sub__', precedence=12),
+    ]
