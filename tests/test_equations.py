@@ -1,4 +1,4 @@
-"""Test that combining operations of different rank returns the correct result and also has the
+"""Test that combining operations of different precedence returns the correct result and also has the
 correct placement of parentheses in the description."""
 
 import pytest

@@ -21,9 +21,9 @@ def new_func_from_operation(self, other, operation):
         raise TypeError(msg)
 
 
-def new_description_from_operation(self, other, operation_symbol, rank, reverse):
+def new_description_from_operation(self, other, operation_symbol, precedence, reverse):
     """Returns a string describing the function resulting from combining self and other through
-    the specified operation. The rank of the operation is compared to the rank of the last operation
+    the specified operation. The precedence of the operation is compared to the precedence of the last operation
     on self and other to determine whether parentheses are required."""
     self_desc = self.description
     if isinstance(other, MathFunc):
@@ -33,16 +33,16 @@ def new_description_from_operation(self, other, operation_symbol, rank, reverse)
     else:
         other_desc = str(other)
 
-    self_rank = getattr(self, '_rank')
+    self_rank = getattr(self, '_precedence')
     if self_rank is None:
         pass
-    elif self_rank < rank:
+    elif self_rank < precedence:
         self_desc = add_parentheses(self_desc)
 
-    other_rank = getattr(other, '_rank', None)  # if other is not a MathFunc, it will not have a rank attribute
+    other_rank = getattr(other, '_precedence', None)  # if other is not a MathFunc, it will not have a precedence attribute
     if other_rank is None:
         pass
-    elif other_rank < rank:
+    elif other_rank < precedence:
         other_desc = add_parentheses(other_desc)
 
     if reverse:
@@ -51,14 +51,14 @@ def new_description_from_operation(self, other, operation_symbol, rank, reverse)
         return ' '.join((self_desc, operation_symbol, other_desc))
 
 
-def math_operation(operation_name, operation, operation_symbol, rank, reverse=False):
+def math_operation(operation_name, operation, operation_symbol, precedence, reverse=False):
     """Function generator which produces the functions for arithmetic operations which are bound
     to MathFunc."""
     def inner(self, other):
         new_func = new_func_from_operation(self, other, operation)
-        new_desc = new_description_from_operation(self, other, operation_symbol, rank, reverse)
+        new_desc = new_description_from_operation(self, other, operation_symbol, precedence, reverse)
         mf = MathFunc(func=new_func, description=new_desc)
-        mf._rank = rank
+        mf._precedence = precedence
         return mf
     inner.__name__ = operation_name
     inner.__doc__ = f"Return new MathFunc with unevaluated function resulting from {'other' if reverse else 'self'} " \
@@ -71,7 +71,7 @@ class MathFunc:
     """Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,
     including MathFunc instances."""
 
-    # rank taken from reference https://docs.python.org/3/reference/expressions.html#operator-precedence
+    # precedence taken from reference https://docs.python.org/3/reference/expressions.html#operator-precedence
     __pow__ = math_operation('__pow__', operator.pow, '**', 15)
     __mul__ = math_operation('__mul__', operator.mul, '*', 13)
     __truediv__ = math_operation('__truediv__', operator.truediv, '/', 13)
@@ -84,7 +84,7 @@ class MathFunc:
         self.args = args
         self.kwargs = kwargs
         self._description = description
-        self._rank = None
+        self._precedence = None
 
     @property
     def description(self):
