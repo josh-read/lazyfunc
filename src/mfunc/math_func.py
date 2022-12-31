@@ -5,6 +5,9 @@ from warnings import warn
 from mfunc.utils import callable_name, add_parentheses
 
 
+MAX_RANK = 15
+
+
 def new_func_from_operation(self, other, operation):
     """Returns a function by combining self and other through a specified operation.
     Self must be of type MathFunc, other may be a scalar value or any callable including MathFunc"""
@@ -30,13 +33,13 @@ def new_description_from_operation(self, other, operation_symbol, rank, reverse)
     else:
         other_desc = str(other)
 
-    self_rank = getattr(self, 'rank', None)
+    self_rank = getattr(self, '_rank')
     if self_rank is None:
         pass
     elif self_rank < rank:
         self_desc = add_parentheses(self_desc)
 
-    other_rank = getattr(other, 'rank', None)  # if other is not a MathFunc, it will not have a rank attribute
+    other_rank = getattr(other, '_rank', None)  # if other is not a MathFunc, it will not have a rank attribute
     if other_rank is None:
         pass
     elif other_rank < rank:
@@ -54,7 +57,9 @@ def math_operation(operation_name, operation, operation_symbol, rank, reverse=Fa
     def inner(self, other):
         new_func = new_func_from_operation(self, other, operation)
         new_desc = new_description_from_operation(self, other, operation_symbol, rank, reverse)
-        return MathFunc(func=new_func, description=new_desc, rank=rank)
+        mf = MathFunc(func=new_func, description=new_desc)
+        mf._rank = rank
+        return mf
     inner.__name__ = operation_name
     inner.__doc__ = f"Return new MathFunc with unevaluated function resulting from {'other' if reverse else 'self'} " \
                     f"{operation_symbol} {'self' if reverse else 'other'}, " \
@@ -74,12 +79,12 @@ class MathFunc:
     __radd__ = math_operation('__add__', operator.add, '+', 12, reverse=True)
     __sub__ = math_operation('__sub__', operator.sub, '-', 12)
 
-    def __init__(self, func, *args, description=None, rank=None, **kwargs):
+    def __init__(self, func, *args, description=None, **kwargs):
         self.func = func
         self.args = args
         self.kwargs = kwargs
         self._description = description
-        self.rank = rank
+        self._rank = None
 
     @property
     def description(self):
