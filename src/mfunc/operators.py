@@ -5,8 +5,9 @@ from functools import cached_property
 
 class Operator:
 
-    def __init__(self, name):
+    def __init__(self, name, precedence=0):
         self.name = name
+        self.rank = precedence
 
     @cached_property
     def func(self):
@@ -32,7 +33,7 @@ def has_dunder(name):
 
 
 def auto_generate_operators():
-    return [Operator(func_name)
+    return [Operator(func_name, precedence=0)
             for func_name, _ in inspect.getmembers(operator, inspect.isbuiltin)
             if has_dunder(func_name)]
 
