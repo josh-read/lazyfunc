@@ -5,9 +5,6 @@ from mfunc.utils import callable_name, add_parentheses, insert
 from mfunc.operators import operators
 
 
-MAX_RANK = 15
-
-
 def new_func_from_operation(self, other, operation):
     """Returns a function by combining self and other through a specified operation.
     Self must be of type MathFunc, other may be a scalar value or any callable including MathFunc"""
