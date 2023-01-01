@@ -5,15 +5,15 @@ from mfunc.utils import callable_name, add_parentheses, insert
 from mfunc.operators import operators
 
 
-def new_func_from_operation(self, other, operation):
+def new_func_from_operation(self, other, operator):
     """Returns a function by combining self and other through a specified operation.
     Self must be of type MathFunc, other may be a scalar value or any callable including MathFunc"""
     if callable(other):
-        return lambda *x: operation(self(*x), other(*x))
+        return lambda *x: operator.func(self(*x), other(*x))
     elif isinstance(other, numbers.Real):
-        return lambda *x: operation(self(*x), other)
+        return lambda *x: operator.func(self(*x), other)
     else:
-        msg = f"Cannot call {operation.__name__} on MathFunc and type {type(other)}. " \
+        msg = f"Cannot call {operator.name} on MathFunc and type {type(other)}. " \
               f"Must be either callable or a scalar value."
         raise TypeError(msg)
 
@@ -55,7 +55,7 @@ def math_operation(operator, reverse=False):
         operator.name, operator.func, operator.operation_format_template, operator.precedence
 
     def inner(self, other):
-        new_func = new_func_from_operation(self, other, operation)
+        new_func = new_func_from_operation(self, other, operator)
         new_desc = new_description_from_operation(self, other, operation_formatting_template, precedence, reverse)
         mf = MathFunc(func=new_func, description=new_desc)
         mf._precedence = precedence
