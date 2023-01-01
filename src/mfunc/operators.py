@@ -45,9 +45,12 @@ class Operator:
 
 
 operators = [
-        Operator('__pow__', precedence=15),
-        Operator('__mul__', precedence=13),
-        Operator('__truediv__', precedence=13),
-        Operator('__add__', precedence=12),
-        Operator('__sub__', precedence=12),
-    ]
+    Operator('__pow__', precedence=15),
+    Operator('__mul__', precedence=13),
+    Operator('__matmul__', precedence=13),
+    Operator('__truediv__', precedence=13),
+    Operator('__floordiv__', precedence=13),
+    Operator('__mod__', precedence=13),
+    Operator('__add__', precedence=12),
+    Operator('__sub__', precedence=12),
+]
