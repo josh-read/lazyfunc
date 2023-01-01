@@ -18,7 +18,7 @@ def new_func_from_operation(self, other, operator):
         raise TypeError(msg)
 
 
-def new_description_from_operation(self, other, operation_formatting_template, precedence, reverse):
+def new_description_from_operation(self, other, operator, reverse):
     """Returns a string describing the function resulting from combining self and other through
     the specified operation. The precedence of the operation is compared to the precedence of the last operation
     on self and other to determine whether parentheses are required."""
@@ -33,40 +33,38 @@ def new_description_from_operation(self, other, operation_formatting_template, p
     self_rank = getattr(self, '_precedence')
     if self_rank is None:
         pass
-    elif self_rank < precedence:
+    elif self_rank < operator.precedence:
         self_desc = add_parentheses(self_desc)
 
     other_rank = getattr(other, '_precedence', None)  # if other is not a MathFunc, it will not have a precedence attribute
     if other_rank is None:
         pass
-    elif other_rank < precedence:
+    elif other_rank < operator.precedence:
         other_desc = add_parentheses(other_desc)
 
     if reverse:
-        return operation_formatting_template.format(other_desc, self_desc)
+        return operator.operation_format_template.format(other_desc, self_desc)
     else:
-        return operation_formatting_template.format(self_desc, other_desc)
+        return operator.operation_format_template.format(self_desc, other_desc)
 
 
 def math_operation(operator, reverse=False):
     """Function generator which produces the functions for arithmetic operations which are bound
     to MathFunc."""
-    operation_name, operation, operation_formatting_template, precedence = \
-        operator.name, operator.func, operator.operation_format_template, operator.precedence
 
     def inner(self, other):
         new_func = new_func_from_operation(self, other, operator)
-        new_desc = new_description_from_operation(self, other, operation_formatting_template, precedence, reverse)
+        new_desc = new_description_from_operation(self, other, operator, reverse)
         mf = MathFunc(func=new_func, description=new_desc)
-        mf._precedence = precedence
+        mf._precedence = operator.precedence
         return mf
 
     if reverse:
-        operation_description = operation_formatting_template.format('other', 'self')
+        operation_description = operator.operation_format_template.format('other', 'self')
     else:
-        operation_description = operation_formatting_template.format('self', 'other')
+        operation_description = operator.operation_format_template.format('self', 'other')
 
-    inner.__name__ = operation_name
+    inner.__name__ = operator.name
     inner.__doc__ = f"Return new instance MathFunc({operation_description}), " \
                     "where other may be a scalar value or any other callable including another MathFunc instance."
     return inner
