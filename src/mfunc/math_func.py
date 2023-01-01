@@ -48,8 +48,8 @@ def description_from_operator(self, other, operator, reverse):
         return operator.operation_format_template.format(self_desc, other_desc)
 
 
-def math_func_method_from_operator(operator, reverse=False):
-    """Function generator which produces the functions for arithmetic operations which are bound
+def math_func_method_factory(operator, reverse=False):
+    """Function factory which produces the functions for operations which are bound
     to MathFunc."""
 
     def inner(self, other):
@@ -73,10 +73,10 @@ def math_func_method_from_operator(operator, reverse=False):
 def math_func_meta(name, bases, attrs):
     """Metaclass over class decorator as special operator behaviour needs to persist through inheritance."""
     for operator in operators:
-        attrs[operator.name] = math_func_method_from_operator(operator)
+        attrs[operator.name] = math_func_method_factory(operator)
         if operator.number_of_operands == 2:  # dyadic operators all have reverse methods
             reverse_operator_name = insert(operator.name, 'r', index=2)
-            attrs[reverse_operator_name] = math_func_method_from_operator(operator, reverse=True)
+            attrs[reverse_operator_name] = math_func_method_factory(operator, reverse=True)
     return type(name, bases, attrs)
 
 
