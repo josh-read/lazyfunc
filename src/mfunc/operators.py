@@ -1,6 +1,7 @@
 import inspect
 import operator
 from functools import cached_property
+from mfunc.utils import insert
 
 
 def has_dunder(name):
@@ -20,10 +21,19 @@ class Operator:
     def func(self):
         return getattr(operator, self.name)
 
-    @cached_property
+    @property
     def number_of_operands(self):
         sig = inspect.signature(self.func)
         return len(sig.parameters)
+
+    @property
+    def is_dyadic(self):
+        return self.number_of_operands == 2
+
+    @property
+    def has_inplace_variant(self):
+        inplace_name = insert(self.name, 'i', 2)
+        return inplace_name in DUNDER_METHODS
 
     @cached_property
     def operation_format_template(self):

@@ -74,7 +74,7 @@ def math_func_meta(name, bases, attrs):
     """Metaclass over class decorator as special operator behaviour needs to persist through inheritance."""
     for operator in operators:
         attrs[operator.name] = math_func_method_factory(operator)
-        if operator.number_of_operands == 2:  # dyadic operators all have reverse methods
+        if operator.is_dyadic:  # dyadic operators all have reverse methods
             reverse_operator_name = insert(operator.name, 'r', index=2)
             attrs[reverse_operator_name] = math_func_method_factory(operator, reverse=True)
     return type(name, bases, attrs)
