@@ -5,7 +5,7 @@ from mfunc.utils import callable_name, add_parentheses, insert
 from mfunc.operators import operators
 
 
-def new_func_from_operation(self, other, operator):
+def function_from_operator(self, other, operator):
     """Returns a function by combining self and other through a specified operation.
     Self must be of type MathFunc, other may be a scalar value or any callable including MathFunc"""
     if callable(other):
@@ -18,7 +18,7 @@ def new_func_from_operation(self, other, operator):
         raise TypeError(msg)
 
 
-def new_description_from_operation(self, other, operator, reverse):
+def description_from_operator(self, other, operator, reverse):
     """Returns a string describing the function resulting from combining self and other through
     the specified operation. The precedence of the operation is compared to the precedence of the last operation
     on self and other to determine whether parentheses are required."""
@@ -48,13 +48,13 @@ def new_description_from_operation(self, other, operator, reverse):
         return operator.operation_format_template.format(self_desc, other_desc)
 
 
-def math_operation(operator, reverse=False):
+def math_func_method_from_operator(operator, reverse=False):
     """Function generator which produces the functions for arithmetic operations which are bound
     to MathFunc."""
 
     def inner(self, other):
-        new_func = new_func_from_operation(self, other, operator)
-        new_desc = new_description_from_operation(self, other, operator, reverse)
+        new_func = function_from_operator(self, other, operator)
+        new_desc = description_from_operator(self, other, operator, reverse)
         mf = MathFunc(func=new_func, description=new_desc)
         mf._precedence = operator.precedence
         return mf
@@ -73,10 +73,10 @@ def math_operation(operator, reverse=False):
 def math_func_meta(name, bases, attrs):
     """Metaclass over class decorator as special operator behaviour needs to persist through inheritance."""
     for operator in operators:
-        attrs[operator.name] = math_operation(operator)
+        attrs[operator.name] = math_func_method_from_operator(operator)
         if operator.number_of_operands == 2:  # dyadic operators all have reverse methods
             reverse_operator_name = insert(operator.name, 'r', index=2)
-            attrs[reverse_operator_name] = math_operation(operator, reverse=True)
+            attrs[reverse_operator_name] = math_func_method_from_operator(operator, reverse=True)
     return type(name, bases, attrs)
 
 
