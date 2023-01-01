@@ -45,7 +45,7 @@ def test_mul():
         mf_f * 'foo'
     # test MathFunc operation name and docstring
     assert MathFunc.__mul__.__name__ == '__mul__'
-    assert MathFunc.__mul__.__doc__ == 'Return new MathFunc with unevaluated function resulting from self * other, where other may be a scalar value or any other callable including another MathFunc instance.'
+    assert MathFunc.__mul__.__doc__ == 'Return new instance MathFunc(self * other), where other may be a scalar value or any other callable including another MathFunc instance.'
 
 
 def test_add():

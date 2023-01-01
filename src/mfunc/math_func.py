@@ -1,8 +1,8 @@
-import operator
 import numbers
 from warnings import warn
 
-from mfunc.utils import callable_name, add_parentheses
+from mfunc.utils import callable_name, add_parentheses, insert
+from mfunc.operators import operators
 
 
 MAX_RANK = 15
@@ -21,7 +21,7 @@ def new_func_from_operation(self, other, operation):
         raise TypeError(msg)
 
 
-def new_description_from_operation(self, other, operation_symbol, precedence, reverse):
+def new_description_from_operation(self, other, operation_formatting_template, precedence, reverse):
     """Returns a string describing the function resulting from combining self and other through
     the specified operation. The precedence of the operation is compared to the precedence of the last operation
     on self and other to determine whether parentheses are required."""
@@ -46,38 +46,49 @@ def new_description_from_operation(self, other, operation_symbol, precedence, re
         other_desc = add_parentheses(other_desc)
 
     if reverse:
-        return ' '.join((other_desc, operation_symbol, self_desc))
+        return operation_formatting_template.format(other_desc, self_desc)
     else:
-        return ' '.join((self_desc, operation_symbol, other_desc))
+        return operation_formatting_template.format(self_desc, other_desc)
 
 
-def math_operation(operation_name, operation, operation_symbol, precedence, reverse=False):
+def math_operation(operation_name, operation, operation_formatting_template, precedence, reverse=False):
     """Function generator which produces the functions for arithmetic operations which are bound
     to MathFunc."""
     def inner(self, other):
         new_func = new_func_from_operation(self, other, operation)
-        new_desc = new_description_from_operation(self, other, operation_symbol, precedence, reverse)
+        new_desc = new_description_from_operation(self, other, operation_formatting_template, precedence, reverse)
         mf = MathFunc(func=new_func, description=new_desc)
         mf._precedence = precedence
         return mf
+
+    if reverse:
+        operation_description = operation_formatting_template.format('other', 'self')
+    else:
+        operation_description = operation_formatting_template.format('self', 'other')
+
     inner.__name__ = operation_name
-    inner.__doc__ = f"Return new MathFunc with unevaluated function resulting from {'other' if reverse else 'self'} " \
-                    f"{operation_symbol} {'self' if reverse else 'other'}, " \
+    inner.__doc__ = f"Return new instance MathFunc({operation_description}), " \
                     "where other may be a scalar value or any other callable including another MathFunc instance."
     return inner
 
 
-class MathFunc:
+def math_func_meta(name, bases, attrs):
+    """Metaclass over class decorator as special operator behaviour needs to persist through inheritance."""
+    for operator in operators:
+        attrs[operator.name] = math_operation(
+            operator.name, operator.func, operator.operation_format_template, operator.precedence
+        )
+        if operator.number_of_operands == 2:  # dyadic operators all have reverse methods
+            reverse_operator_name = insert(operator.name, 'r', index=2)
+            attrs[reverse_operator_name] = math_operation(
+                operator.name, operator.func, operator.operation_format_template, operator.precedence, reverse=True
+            )
+    return type(name, bases, attrs)
+
+
+class MathFunc(metaclass=math_func_meta):
     """Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,
     including MathFunc instances."""
-
-    # precedence taken from reference https://docs.python.org/3/reference/expressions.html#operator-precedence
-    __pow__ = math_operation('__pow__', operator.pow, '**', 15)
-    __mul__ = math_operation('__mul__', operator.mul, '*', 13)
-    __truediv__ = math_operation('__truediv__', operator.truediv, '/', 13)
-    __add__ = math_operation('__add__', operator.add, '+', 12)
-    __radd__ = math_operation('__add__', operator.add, '+', 12, reverse=True)
-    __sub__ = math_operation('__sub__', operator.sub, '-', 12)
 
     def __init__(self, func, *args, description=None, **kwargs):
         self.func = func
