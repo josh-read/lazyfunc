@@ -13,9 +13,10 @@ DUNDER_METHODS = [func_name for func_name, _ in inspect.getmembers(operator, ins
 
 class Operator:
 
-    def __init__(self, name, precedence):
+    def __init__(self, name, precedence, has_reverse=None):
         self.name = name
         self.precedence = precedence
+        self._has_reverse = has_reverse
 
     @cached_property
     def func(self):
@@ -27,8 +28,11 @@ class Operator:
         return len(sig.parameters)
 
     @property
-    def is_dyadic(self):
-        return self.number_of_operands == 2
+    def has_reverse(self):
+        if self._has_reverse is None:
+            return self.number_of_operands == 2  # most dyadic operators have reverse variants
+        else:
+            return self._has_reverse
 
     @property
     def has_inplace_variant(self):
