@@ -13,7 +13,7 @@ DUNDER_METHODS = [func_name for func_name, _ in inspect.getmembers(operator, ins
 
 class Operator:
 
-    def __init__(self, name, precedence=0):
+    def __init__(self, name, precedence):
         self.name = name
         self.precedence = precedence
 
