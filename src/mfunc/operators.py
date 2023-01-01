@@ -35,14 +35,13 @@ class Operator:
         inplace_name = insert(self.name, 'i', 2)
         return inplace_name in DUNDER_METHODS
 
-    @cached_property
-    def operation_format_template(self):
+    def format(self, instance, other):
         operation_doc = (self.func.__doc__
                          .removeprefix('Same as ')
                          .removesuffix('.')
                          .removesuffix(', for a and b sequences')  # concat
                          .removesuffix(' (note reversed operands)'))  # contains
-        return operation_doc.replace('a', '{}').replace('b', '{}').replace('c', '{}')
+        return operation_doc.replace('a', instance).replace('b', other)
 
 
 operators = [

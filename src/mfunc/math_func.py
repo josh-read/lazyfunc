@@ -43,9 +43,9 @@ def description_from_operator(self, other, operator, reverse):
         other_desc = add_parentheses(other_desc)
 
     if reverse:
-        return operator.operation_format_template.format(other_desc, self_desc)
+        return operator.format(other_desc, self_desc)
     else:
-        return operator.operation_format_template.format(self_desc, other_desc)
+        return operator.format(self_desc, other_desc)
 
 
 def math_func_method_factory(operator, reverse=False):
@@ -60,9 +60,9 @@ def math_func_method_factory(operator, reverse=False):
         return mf
 
     if reverse:
-        operation_description = operator.operation_format_template.format('other', 'self')
+        operation_description = operator.format('other', 'self')
     else:
-        operation_description = operator.operation_format_template.format('self', 'other')
+        operation_description = operator.format('self', 'other')
 
     inner.__name__ = operator.name
     inner.__doc__ = f"Return new instance MathFunc({operation_description}), " \
