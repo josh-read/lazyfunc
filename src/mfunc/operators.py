@@ -2,13 +2,15 @@ import inspect
 import operator
 from functools import cached_property
 from mfunc.utils import insert
+from string import ascii_lowercase
 
 
 def has_dunder(name):
     return name.startswith('__') and name.endswith('__')
 
 
-DUNDER_METHODS = [func_name for func_name, _ in inspect.getmembers(operator, inspect.isbuiltin) if has_dunder(func_name)]
+DUNDER_METHODS = [func_name for func_name, _ in inspect.getmembers(operator, inspect.isbuiltin) if
+                  has_dunder(func_name)]
 
 
 class Operator:
@@ -39,16 +41,15 @@ class Operator:
         inplace_name = insert(self.name, 'i', 2)
         return inplace_name in DUNDER_METHODS
 
-    def format(self, instance, other=None):
+    def format(self, *values):
         doc_template = (self.func.__doc__
-                         .removeprefix('Same as ')
-                         .removesuffix('.')
-                         .removesuffix(', for a and b sequences')  # concat
-                         .removesuffix(' (note reversed operands)'))  # contains
-        doc_filled = doc_template.replace('a', instance)
-        if other is not None:
-            doc_filled = doc_filled.replace('b', other)
-        return doc_filled
+                        .removeprefix('Same as ')
+                        .removesuffix('.')
+                        .removesuffix(', for a and b sequences')  # concat
+                        .removesuffix(' (note reversed operands)'))  # contains
+        for i, (char, _) in enumerate(zip(ascii_lowercase, values)):
+            doc_template = doc_template.replace(char, f'{{{i}}}')
+        return doc_template.format(*values)
 
 
 # https://docs.python.org/3/reference/expressions.html#operator-precedence
