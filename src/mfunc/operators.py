@@ -64,4 +64,6 @@ operators = [
     Operator('__mod__', precedence=13),
     Operator('__add__', precedence=12),
     Operator('__sub__', precedence=12),
+    Operator('__rshift__', precedence=11),
+    Operator('__lshift__', precedence=11),
 ]
