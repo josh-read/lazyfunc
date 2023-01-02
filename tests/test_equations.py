@@ -35,6 +35,12 @@ def three(x):
     '~(1 + 1) / 2',
     '3 >> 2 // 2',
     '(1 << 3) / 2',
+    '1 & 2 // 2',
+    '(1 & 2) // 2',
+    '1 ^ 2 // 2',
+    '(1 ^ 2) // 2',
+    '1 | 2 // 2',
+    '(1 | 2) // 2',
 ])
 def test_equation(equation):
     equation_from_math_funcs = equation.replace('1', 'one').replace('2', 'two').replace('3', 'three')

@@ -66,4 +66,7 @@ operators = [
     Operator('__sub__', precedence=12),
     Operator('__rshift__', precedence=11),
     Operator('__lshift__', precedence=11),
+    Operator('__and__', precedence=10),
+    Operator('__xor__', precedence=9),
+    Operator('__or__', precedence=8),
 ]
