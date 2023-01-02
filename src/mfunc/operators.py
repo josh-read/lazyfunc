@@ -39,17 +39,23 @@ class Operator:
         inplace_name = insert(self.name, 'i', 2)
         return inplace_name in DUNDER_METHODS
 
-    def format(self, instance, other):
-        operation_doc = (self.func.__doc__
+    def format(self, instance, other=None):
+        doc_template = (self.func.__doc__
                          .removeprefix('Same as ')
                          .removesuffix('.')
                          .removesuffix(', for a and b sequences')  # concat
                          .removesuffix(' (note reversed operands)'))  # contains
-        return operation_doc.replace('a', instance).replace('b', other)
+        doc_filled = doc_template.replace('a', instance)
+        if other is not None:
+            doc_filled = doc_filled.replace('b', other)
+        return doc_filled
 
 
 operators = [
     Operator('__pow__', precedence=15),
+    Operator('__pos__', precedence=14),
+    Operator('__neg__', precedence=14),
+    Operator('__invert__', precedence=14),
     Operator('__mul__', precedence=13),
     Operator('__matmul__', precedence=13),
     Operator('__truediv__', precedence=13),
