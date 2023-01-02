@@ -5,12 +5,14 @@ from mfunc.utils import callable_name, add_parentheses, insert
 from mfunc.operators import operators
 
 
-def function_from_operator(operator, self, other=None):
+def function_from_operator(operator, *instances):
     """Returns a function by combining self and other through a specified operation.
     Self must be of type MathFunc, other may be a scalar value or any callable including MathFunc"""
     if operator.number_of_operands == 1:
+        self, = instances
         return lambda *x: operator.func(self(*x))
     elif operator.number_of_operands == 2:
+        self, other = instances
         if callable(other):
             return lambda *x: operator.func(self(*x), other(*x))
         elif isinstance(other, numbers.Real):
@@ -24,80 +26,52 @@ def function_from_operator(operator, self, other=None):
         raise NotImplementedError(msg)
 
 
-def description_from_unary_operator(self, operator):
-    self_desc = self.description
-    self_rank = getattr(self, '_precedence')
-    if self_rank is None:
+def _get_desc(instance, operator):
+    if isinstance(instance, MathFunc):
+        desc = instance.description
+    elif callable(instance):
+        desc = callable_name(instance)
+    else:
+        desc = str(instance)
+
+    precedence = getattr(instance, '_precedence', None)
+    if precedence is None:
         pass
-    elif self_rank < operator.precedence:
-        self_desc = add_parentheses(self_desc)
-    return operator.format(self_desc)
+    elif precedence < operator.precedence:
+        desc = add_parentheses(desc)
+
+    return desc
 
 
-def description_from_dyadic_operator(self, other, operator, reverse):
+def description_from_operator(operator, *instances, reverse):
     """Returns a string describing the function resulting from combining self and other through
     the specified operation. The precedence of the operation is compared to the precedence of the last operation
     on self and other to determine whether parentheses are required."""
-    self_desc = self.description
-    if isinstance(other, MathFunc):
-        other_desc = other.description
-    elif callable(other):
-        other_desc = callable_name(other)
-    else:
-        other_desc = str(other)
-
-    self_rank = getattr(self, '_precedence')
-    if self_rank is None:
-        pass
-    elif self_rank < operator.precedence:
-        self_desc = add_parentheses(self_desc)
-
-    other_rank = getattr(other, '_precedence', None)  # if other is not a MathFunc, it will not have a precedence attribute
-    if other_rank is None:
-        pass
-    elif other_rank < operator.precedence:
-        other_desc = add_parentheses(other_desc)
+    descriptions = [_get_desc(instance, operator) for instance in instances]
 
     if reverse:
-        return operator.format(other_desc, self_desc)
-    else:
-        return operator.format(self_desc, other_desc)
+        descriptions = reversed(descriptions)
+    return operator.format(*descriptions)
 
 
-def math_func_unary_method_factory(operator):
+def math_func_method_factory(operator, reverse=False):
     """Function factory which produces the functions for operations which are bound
     to MathFunc."""
 
-    def inner(self):
-        new_func = function_from_operator(operator, self)
-        new_desc = description_from_unary_operator(self, operator)
+    def inner(*instances):
+        new_func = function_from_operator(operator, *instances)
+        new_desc = description_from_operator(operator, *instances, reverse=reverse)
         mf = MathFunc(func=new_func, description=new_desc)
         mf._precedence = operator.precedence
         return mf
 
-    operation_description = operator.format('self')
-
-    inner.__name__ = operator.name
-    inner.__doc__ = f"Return new instance MathFunc({operation_description}), " \
-                    "where other may be a scalar value or any other callable including another MathFunc instance."
-    return inner
-
-
-def math_func_dyadic_method_factory(operator, reverse=False):
-    """Function factory which produces the functions for operations which are bound
-    to MathFunc."""
-
-    def inner(self, other):
-        new_func = function_from_operator(operator, self, other)
-        new_desc = description_from_dyadic_operator(self, other, operator, reverse)
-        mf = MathFunc(func=new_func, description=new_desc)
-        mf._precedence = operator.precedence
-        return mf
-
-    if reverse:
-        operation_description = operator.format('other', 'self')
-    else:
-        operation_description = operator.format('self', 'other')
+    if operator.number_of_operands == 1:
+        operation_description = operator.format('self')
+    elif operator.number_of_operands == 2:
+        if reverse:
+            operation_description = operator.format('other', 'self')
+        else:
+            operation_description = operator.format('self', 'other')
 
     inner.__name__ = operator.name
     inner.__doc__ = f"Return new instance MathFunc({operation_description}), " \
@@ -108,13 +82,10 @@ def math_func_dyadic_method_factory(operator, reverse=False):
 def math_func_meta(name, bases, attrs):
     """Metaclass over class decorator as special operator behaviour needs to persist through inheritance."""
     for operator in operators:
-        if operator.number_of_operands == 1:
-            attrs[operator.name] = math_func_unary_method_factory(operator)
-        if operator.number_of_operands == 2:
-            attrs[operator.name] = math_func_dyadic_method_factory(operator)
+        attrs[operator.name] = math_func_method_factory(operator)
         if operator.has_reverse:
             reverse_operator_name = insert(operator.name, 'r', index=2)
-            attrs[reverse_operator_name] = math_func_dyadic_method_factory(operator, reverse=True)
+            attrs[reverse_operator_name] = math_func_method_factory(operator, reverse=True)
     return type(name, bases, attrs)
 
 
