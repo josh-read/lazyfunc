@@ -47,10 +47,9 @@ def test_call():
     assert np.allclose(mf_f(x), x)
     mf_j = MathFunc(MultiParameterClass())
     assert np.allclose(mf_j(x, y), (x + y))
-    with pytest.raises(NotImplementedError):
-        mf = MathFunc(single_parameter_function)
-        mf = mf(SingleParameterClass())
-        assert mf(x) == x
+    mf = MathFunc(single_parameter_function)
+    mf = mf(SingleParameterClass())
+    assert np.allclose(mf(x), x)
 
 
 def test_equality():

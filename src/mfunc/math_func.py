@@ -26,7 +26,7 @@ def function_from_operator(operator, *instances):
         raise NotImplementedError(msg)
 
 
-def _get_desc(instance, operator):
+def _get_desc(instance, operator_precedence):
     if isinstance(instance, MathFunc):
         desc = instance.description
     elif callable(instance):
@@ -37,7 +37,7 @@ def _get_desc(instance, operator):
     precedence = getattr(instance, '_precedence', None)
     if precedence is None:
         pass
-    elif precedence < operator.precedence:
+    elif precedence < operator_precedence:
         desc = add_parentheses(desc)
 
     return desc
@@ -47,7 +47,7 @@ def description_from_operator(operator, *instances, reverse):
     """Returns a string describing the function resulting from combining self and other through
     the specified operation. The precedence of the operation is compared to the precedence of the last operation
     on self and other to determine whether parentheses are required."""
-    descriptions = [_get_desc(instance, operator) for instance in instances]
+    descriptions = [_get_desc(instance, operator.precedence) for instance in instances]
 
     if reverse:
         descriptions = reversed(descriptions)
@@ -113,10 +113,20 @@ class MathFunc(metaclass=math_func_meta):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.description})"
 
-    def __call__(self, *x):
-        if all(callable(y) for y in x):
-            raise NotImplementedError  # this will produce a new MathFunc
-        return self.func(*x, *self.args, **self.kwargs)
+    def __call__(self, *args, **kwargs):
+        if callable(args[0]):
+            operator_precedence = 17
+            other_func, *args = args
+            new_func = lambda *y: self.func(other_func(*y), *args, **kwargs)
+            if isinstance(other_func, MathFunc):
+                new_desc = _get_desc(self, operator_precedence) + _get_desc(other_func, operator_precedence)
+            else:
+                new_desc = _get_desc(self, operator_precedence) + '(' + callable_name(other_func) + ')'
+            mf = MathFunc(func=new_func, description=new_desc)
+            mf._precedence = operator_precedence
+            return mf
+        else:
+            return self.func(*args, *self.args, **kwargs, **self.kwargs)
 
     def is_equal(self, other):
         """To stay consistent with all other dunder methods, the __eq__ method lazily compares equality
