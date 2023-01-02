@@ -32,6 +32,12 @@ def test_repr():
     mf_j = MathFunc(MultiParameterClass())
     assert str(mf_j) == 'MathFunc(MultiParameterClass)'
 
+    @MathFunc
+    def abc(x):
+        return x
+
+    assert str(abc + abc) == 'MathFunc(abc + abc)'
+
 
 def test_call():
     x = np.array([1, 2, 3, 4])
