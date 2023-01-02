@@ -51,6 +51,7 @@ class Operator:
         return doc_filled
 
 
+# https://docs.python.org/3/reference/expressions.html#operator-precedence
 operators = [
     Operator('__pow__', precedence=15),
     Operator('__pos__', precedence=14),
