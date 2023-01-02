@@ -5,21 +5,23 @@ from mfunc.utils import callable_name, add_parentheses, insert
 from mfunc.operators import operators
 
 
-def function_from_unary_operator(self, operator):
-    return lambda *x: operator.func(self(*x))
-
-
-def function_from_dyadic_operator(self, other, operator):
+def function_from_operator(operator, self, other=None):
     """Returns a function by combining self and other through a specified operation.
     Self must be of type MathFunc, other may be a scalar value or any callable including MathFunc"""
-    if callable(other):
-        return lambda *x: operator.func(self(*x), other(*x))
-    elif isinstance(other, numbers.Real):
-        return lambda *x: operator.func(self(*x), other)
+    if operator.number_of_operands == 1:
+        return lambda *x: operator.func(self(*x))
+    elif operator.number_of_operands == 2:
+        if callable(other):
+            return lambda *x: operator.func(self(*x), other(*x))
+        elif isinstance(other, numbers.Real):
+            return lambda *x: operator.func(self(*x), other)
+        else:
+            msg = f"Cannot call {operator.name} on MathFunc and type {type(other)}. " \
+                  f"Must be either callable or a scalar value."
+            raise TypeError(msg)
     else:
-        msg = f"Cannot call {operator.name} on MathFunc and type {type(other)}. " \
-              f"Must be either callable or a scalar value."
-        raise TypeError(msg)
+        msg = 'Handling of ternary operators not yet implemented!'
+        raise NotImplementedError(msg)
 
 
 def description_from_unary_operator(self, operator):
@@ -67,7 +69,7 @@ def math_func_unary_method_factory(operator):
     to MathFunc."""
 
     def inner(self):
-        new_func = function_from_unary_operator(self, operator)
+        new_func = function_from_operator(operator, self)
         new_desc = description_from_unary_operator(self, operator)
         mf = MathFunc(func=new_func, description=new_desc)
         mf._precedence = operator.precedence
@@ -86,7 +88,7 @@ def math_func_dyadic_method_factory(operator, reverse=False):
     to MathFunc."""
 
     def inner(self, other):
-        new_func = function_from_dyadic_operator(self, other, operator)
+        new_func = function_from_operator(operator, self, other)
         new_desc = description_from_dyadic_operator(self, other, operator, reverse)
         mf = MathFunc(func=new_func, description=new_desc)
         mf._precedence = operator.precedence
