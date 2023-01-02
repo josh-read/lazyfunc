@@ -41,6 +41,11 @@ def three(x):
     '(1 ^ 2) // 2',
     '1 | 2 // 2',
     '(1 | 2) // 2',
+    '2 > 1',
+    '1 + 1 == 2',
+    '1 + 1 > 2',
+    '1 + (1 > 2)',
+    '(1 < 2) & (2 < 3)',  # comparators cannot be chained (similar to numpy bool arrays)
 ])
 def test_equation(equation):
     equation_from_math_funcs = equation.replace('1', 'one').replace('2', 'two').replace('3', 'three')

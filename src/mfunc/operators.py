@@ -69,4 +69,10 @@ operators = [
     Operator('__and__', precedence=10),
     Operator('__xor__', precedence=9),
     Operator('__or__', precedence=8),
+    Operator('__lt__', precedence=7, has_reverse=False),
+    Operator('__le__', precedence=7, has_reverse=False),
+    Operator('__gt__', precedence=7, has_reverse=False),
+    Operator('__ge__', precedence=7, has_reverse=False),
+    Operator('__ne__', precedence=7, has_reverse=False),
+    Operator('__eq__', precedence=7, has_reverse=False),
 ]
