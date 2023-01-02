@@ -145,7 +145,10 @@ class MathFunc(metaclass=math_func_meta):
             raise NotImplementedError  # this will produce a new MathFunc
         return self.func(*x, *self.args, **self.kwargs)
 
-    def __eq__(self, other):
+    def is_equal(self, other):
+        """To stay consistent with all other dunder methods, the __eq__ method lazily compares equality
+        between the wrapped MathFunc and other. Therefore, this method exists to check whether two unevaluated
+        MathFunc objects are equal, without calling them and comparing the results."""
         try:
             equal = self.description == other.description
         except AttributeError:

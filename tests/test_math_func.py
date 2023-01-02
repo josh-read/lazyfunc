@@ -50,8 +50,8 @@ def test_call():
 def test_equality():
     mf_single_parameter_function = MathFunc(single_parameter_function)
     mf_single_parameter_class = MathFunc(SingleParameterClass())
-    assert (mf_single_parameter_function + mf_single_parameter_class
-            == mf_single_parameter_function + mf_single_parameter_class)
+    assert (mf_single_parameter_function + mf_single_parameter_class).is_equal(
+        mf_single_parameter_function + mf_single_parameter_class)
     with pytest.warns(UserWarning):
-        assert (mf_single_parameter_function + mf_single_parameter_class
-                != mf_single_parameter_class + mf_single_parameter_function)
+        assert not (mf_single_parameter_function + mf_single_parameter_class).is_equal(
+             mf_single_parameter_class + mf_single_parameter_function)
