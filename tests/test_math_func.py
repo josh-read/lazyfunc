@@ -50,6 +50,9 @@ def test_call():
     mf = MathFunc(single_parameter_function)
     mf = mf(SingleParameterClass())
     assert np.allclose(mf(x), x)
+    mf_min = MathFunc(min)
+    mf_min_f = mf_min(mf_f) * 2
+    assert mf_min_f(x) == min(x) * 2
 
 
 def test_equality():
