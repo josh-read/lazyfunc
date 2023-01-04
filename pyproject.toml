@@ -43,6 +43,7 @@ virtual = ".venv"
 dependencies = [
   "pytest",
   "pytest-cov",
+  "numpy",
 ]
 [tool.hatch.envs.default.scripts]
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=mfunc --cov=tests {args}"
