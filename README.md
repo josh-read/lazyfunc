@@ -1,9 +1,9 @@
-# mfunc
+# lazyfunc
 
-[![PyPI - Version](https://img.shields.io/pypi/v/mfunc.svg)](https://pypi.org/project/mfunc)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mfunc.svg)](https://pypi.org/project/mfunc)
+[![PyPI - Version](https://img.shields.io/pypi/v/lazyfunc.svg)](https://pypi.org/project/lazyfunc)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/lazyfunc.svg)](https://pypi.org/project/lazyfunc)
 
-Wrapper class around Python functions allowing mathematical operations, as if they'd already been evaluated.
+Wrapper for callables in Python, enabling many operations between them, with lazy evaluation.
 
 -----
 
@@ -15,9 +15,9 @@ Wrapper class around Python functions allowing mathematical operations, as if th
 ## Installation
 
 ```console
-pip install mfunc
+pip install lazyfunc
 ```
 
 ## License
 
-`mfunc` is distributed under the terms of the [MIT](https://github.com/josh-read/mfunc/blob/main/LICENSE) license.
+`lazyfunc` is distributed under the terms of the [MIT](https://github.com/josh-read/lazyfunc/blob/main/LICENSE) license.
