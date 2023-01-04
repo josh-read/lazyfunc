@@ -1,7 +1,7 @@
 import inspect
 import operator
 from functools import cached_property
-from mfunc.utils import insert
+from lazyfunc.utils import insert
 from string import ascii_lowercase
 
 

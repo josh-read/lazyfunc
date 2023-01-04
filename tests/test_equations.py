@@ -3,21 +3,21 @@ correct placement of parentheses in the description."""
 
 import pytest
 
-from mfunc import *
-from mfunc.utils import add_parentheses
+from lazyfunc import *
+from lazyfunc.utils import add_parentheses
 
 
-@MathFunc
+@LazyFunc
 def one(x):
     return 1
 
 
-@MathFunc
+@LazyFunc
 def two(x):
     return 2
 
 
-@MathFunc
+@LazyFunc
 def three(x):
     return 3
 
@@ -50,6 +50,6 @@ def three(x):
 def test_equation(equation):
     equation_from_math_funcs = equation.replace('1', 'one').replace('2', 'two').replace('3', 'three')
     mf = eval(equation_from_math_funcs)
-    mf_str = 'MathFunc' + add_parentheses(equation_from_math_funcs)
+    mf_str = 'LazyFunc' + add_parentheses(equation_from_math_funcs)
     assert mf(None) == eval(equation)
     assert str(mf) == mf_str

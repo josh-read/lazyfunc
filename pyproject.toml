@@ -3,23 +3,20 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "mfunc"
-description = "Wrapper class around Python functions allowing mathematical operations, as if they'd already been evaluated."
+name = "lazyfunc"
+description = "Wrapper for callables in Python, enabling many operations between them, with lazy evaluation."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 license = "MIT"
 keywords = []
 authors = [
   { name = "Josh Read", email = "joshua-read@hotmail.co.uk" },
 ]
 classifiers = [
-  "Development Status :: 4 - Beta",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
 ]
@@ -27,12 +24,12 @@ dependencies = []
 dynamic = ["version"]
 
 [project.urls]
-Documentation = "https://github.com/josh-read/mfunc#readme"
-Issues = "https://github.com/josh-read/mfunc/issues"
-Source = "https://github.com/josh-read/mfunc"
+Documentation = "https://github.com/josh-read/lazyfunc#readme"
+Issues = "https://github.com/josh-read/lazyfunc/issues"
+Source = "https://github.com/josh-read/lazyfunc"
 
 [tool.hatch.version]
-path = "src/mfunc/__about__.py"
+path = "src/lazyfunc/__about__.py"
 
 [dirs.env]
 virtual = ".venv"
@@ -54,7 +51,7 @@ python = ["39", "310", "311"]
 branch = true
 parallel = true
 omit = [
-  "src/mfunc/__about__.py",
+  "src/lazyfunc/__about__.py",
 ]
 
 [tool.coverage.report]
