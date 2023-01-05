@@ -31,7 +31,6 @@ Documentation = "https://github.com/josh-read/lazyfunc#readme"
 Issues = "https://github.com/josh-read/lazyfunc/issues"
 Source = "https://github.com/josh-read/lazyfunc"
 
-[tool.hatch.version]
 path = "src/_version.py"
 
 [dirs.env]
