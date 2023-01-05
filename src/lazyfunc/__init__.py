@@ -1,4 +1,4 @@
-from importlib.metadata import version, PackageNotFoundError
+from importlib.metadata import version
 
 __version__ = version("lazyfunc")
 
