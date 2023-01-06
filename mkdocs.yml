@@ -1,5 +1,8 @@
 site_name: lazyfunc
 
+theme:
+  name: "material"
+
 plugins:
  - mkdocstrings
 
