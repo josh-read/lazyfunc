@@ -37,4 +37,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install .[tests]
-        pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=lazyfunc --cov=tests
+        pytest
