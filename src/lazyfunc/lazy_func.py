@@ -101,10 +101,23 @@ class LazyFunc(metaclass=lazy_func_meta):
         self._precedence = None
 
     @property
-    def description(self):
-        """Description of the function wrapped by the LazyFunc. This information is presented in the
-        __repr__. This defaults to the __name__ of the wrapped function, or can be set through the
-        description keyword argument. The description is also updated by arithmetic operations are applied."""
+    def description(self) -> str:
+        """Defaults to the name of the wrapped callable, but can be set by the user at object initialisation. Also
+        updated when operations are applied with other callables.
+
+        Examples:
+            >>> def my_function(x):
+            ...     return x
+            >>> lf_auto = LazyFunc(my_function)
+            >>> lf_auto.description
+            'my_function'
+            >>> lf_named = LazyFunc(my_function, description='my_named_function')
+            >>> lf_named.description
+            'my_named_function'
+
+        Returns:
+            A string describing the wrapped function.
+        """
         if self._description is None:
             return callable_name(self.func)
         else:
