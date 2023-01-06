@@ -7,7 +7,7 @@ plugins:
  - mkdocstrings
 
 nav:
-  - index.md
+  - Home: README.md
 #  - tutorials.md
 #  - How-To Guides: how-to-guides.md
   - reference.md
