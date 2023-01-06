@@ -3,7 +3,7 @@ correct placement of parentheses in the description."""
 
 import pytest
 
-from lazyfunc import *
+from lazyfunc import LazyFunc
 from lazyfunc.utils import add_parentheses
 
 
