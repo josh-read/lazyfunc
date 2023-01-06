@@ -141,10 +141,24 @@ class LazyFunc(metaclass=lazy_func_meta):
         else:
             return self.func(*args, *self.args, **kwargs, **self.kwargs)
 
-    def is_equal(self, other):
-        """To stay consistent with all other dunder methods, the __eq__ method lazily compares equality
+    def is_equal(self, other: callable) -> bool:
+        """Checks for equality between self and other.
+
+        To stay consistent with LazyFunc's other dunder methods, the `__eq__` method lazily compares equality
         between the wrapped LazyFunc and other. Therefore, this method exists to check whether two unevaluated
-        LazyFunc objects are equal, without calling them and comparing the results."""
+        LazyFunc objects are equal, without calling them and comparing the results.
+
+        Examples:
+            >>> def my_function(x):
+            ...     return x
+            >>> lf_auto_1 = LazyFunc(my_function)
+            >>> lf_auto_2 = LazyFunc(my_function)
+            >>> lf_named = LazyFunc(my_function, description='my_named_function')
+            >>> lf_auto_1.is_equal(lf_auto_2)
+            True
+            >>> lf_auto_1.is_equal(lf_named)
+            False
+        """
         try:
             equal = self.description == other.description
         except AttributeError:
