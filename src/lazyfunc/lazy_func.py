@@ -126,7 +126,38 @@ class LazyFunc(metaclass=lazy_func_meta):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.description})"
 
-    def __call__(self, *args, **kwargs):
+    def __call__(self, *args, **kwargs) -> object:
+        """Either calls the wrapped function with the provided args and kwargs, or if the first argument is a callable,
+        returns a new LazyFunc object of LazyFunc(args[0](self)).
+
+        When calling a LazyFunc instance, if the first argument is NOT a callable, it behaves exactly as the unwrapped
+        callable.
+        Examples:
+            >>> @LazyFunc
+            ... def my_function(x):
+            ...     return 2 * x
+            ...
+            >>> my_function('foo')  # first argument is not callable
+            'foofoo'
+            >>> import builtins
+            >>> builtin_min = builtins.min
+            >>> min = LazyFunc(min)
+            >>> min([3, 1, 4, 1, 5, 9])  # first argument is not callable
+            1
+            >>> min('lazy', 'function', key=lambda s: s[1])  # first argument is not callable
+            'lazy'
+            >>> min_of_my_function = min(my_function)  # first argument is callable
+            >>> min_of_my_function
+            'LazyFunc(min(my_function))'
+
+        Args:
+            args: Positional arguments to be passed to wrapped function.
+            kwargs: Keyword arguments to be passed to wrapped function.
+
+        Returns:
+            Either the result of the wrapped function evaluated with the supplied args and kwargs, or a new LazyFunc
+            instance.
+        """
         if callable(args[0]):
             operator_precedence = 17
             other_func, *args = args
