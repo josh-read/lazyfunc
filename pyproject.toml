@@ -27,7 +27,7 @@ dynamic = ["version"]
 write_to = "src/_version.py"
 
 [project.urls]
-Documentation = "https://github.com/josh-read/lazyfunc#readme"
+Documentation = "https://josh-read.github.io/lazyfunc/"
 Issues = "https://github.com/josh-read/lazyfunc/issues"
 Source = "https://github.com/josh-read/lazyfunc"
 
