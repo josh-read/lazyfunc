@@ -11,7 +11,6 @@ Wrapper for callables in Python, enabling many operations between them, with laz
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [License](#license)
 
 ## Installation
 
@@ -44,7 +43,3 @@ LazyFunc(f * (g + 2) ** 2)
 True
 
 ```
-
-## License
-
-`lazyfunc` is distributed under the terms of the [MIT](https://github.com/josh-read/lazyfunc/blob/main/LICENSE) license.
