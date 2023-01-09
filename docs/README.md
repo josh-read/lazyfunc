@@ -10,18 +10,12 @@ Wrapper for callables in Python, enabling many operations between them, with laz
 **Table of Contents**
 
 - [Documentation](#documentation)
-- [Installation](#installation)
 - [Usage](#usage)
+- [Installation](#installation)
 
 ## Documentation
 
 For documentation, visit [https://josh-read.github.io/lazyfunc/](https://josh-read.github.io/lazyfunc/).
-
-## Installation
-
-```console
-pip install lazyfunc
-```
 
 ## Usage
 
@@ -47,4 +41,10 @@ LazyFunc(f * (g + 2) ** 2)
 >>> combined_function(1) == 18
 True
 
+```
+
+## Installation
+
+```console
+pip install lazyfunc
 ```
