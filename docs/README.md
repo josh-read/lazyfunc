@@ -9,8 +9,13 @@ Wrapper for callables in Python, enabling many operations between them, with laz
 
 **Table of Contents**
 
+- [Documentation](#documentation)
 - [Installation](#installation)
 - [Usage](#usage)
+
+## Documentation
+
+For documentation, visit [https://josh-read.github.io/lazyfunc/](https://josh-read.github.io/lazyfunc/).
 
 ## Installation
 
