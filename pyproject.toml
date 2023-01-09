@@ -41,6 +41,11 @@ tests = [
   "pytest-cov",
   "numpy",
 ]
+docs = [
+  "mkdocs",
+  "mkdocstrings-python-legacy",
+  "mkdocs-material",
+]
 
 [tool.coverage.run]
 branch = true
