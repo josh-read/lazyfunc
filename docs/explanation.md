@@ -1,5 +1,6 @@
-No inplace operators.
----------------------
+# Explanation
+
+## No inplace operators.
 
 The two lines marked with arrows lead to an infinite loop of creating a function that depends on self,
 which is then assigned to self. This is a problem because the wrapped functions are passed by reference rather
