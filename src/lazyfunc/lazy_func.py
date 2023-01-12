@@ -27,9 +27,7 @@ def function_from_operator(operator, *instances):
 
 
 def _get_desc(instance, operator_precedence):
-    if isinstance(instance, LazyFunc):
-        desc = instance.description
-    elif callable(instance):
+    if callable(instance):
         desc = callable_name(instance)
     else:
         desc = str(instance)
@@ -123,6 +121,11 @@ class LazyFunc(metaclass=lazy_func_meta):
         else:
             return self._description
 
+    @property
+    def __name__(self) -> str:
+        """Alias of the LazyFunc description."""
+        return self.description
+
     def __repr__(self):
         return f"{self.__class__.__name__}({self.description})"
 
@@ -162,10 +165,7 @@ class LazyFunc(metaclass=lazy_func_meta):
             operator_precedence = 17
             other_func, *args = args
             new_func = lambda *y: self.func(other_func(*y), *args, **kwargs)
-            if isinstance(other_func, LazyFunc):
-                new_desc = _get_desc(self, operator_precedence) + '(' + _get_desc(other_func, operator_precedence) + ')'
-            else:
-                new_desc = _get_desc(self, operator_precedence) + '(' + callable_name(other_func) + ')'
+            new_desc = _get_desc(self, operator_precedence) + '(' + callable_name(other_func) + ')'
             mf = LazyFunc(func=new_func, description=new_desc)
             mf._precedence = operator_precedence
             return mf
