@@ -148,7 +148,7 @@ class LazyFunc(metaclass=lazy_func_meta):
             'lazy'
             >>> min_of_my_function = min(my_function)  # first argument is callable
             >>> min_of_my_function
-            'LazyFunc(min(my_function))'
+            LazyFunc(min(my_function))
 
         Args:
             args: Positional arguments to be passed to wrapped function.
