@@ -26,32 +26,30 @@ def function_from_operator(operator, *instances):
         raise NotImplementedError(msg)
 
 
-def _get_desc(instance, operator_precedence):
-    if isinstance(instance, LazyFunc):
-        desc = instance.description
-    elif callable(instance):
-        desc = callable_name(instance)
+def _get_name(instance, operator_precedence):
+    if callable(instance):
+        name = callable_name(instance)
     else:
-        desc = str(instance)
+        name = str(instance)
 
     precedence = getattr(instance, '_precedence', None)
     if precedence is None:
         pass
     elif precedence < operator_precedence:
-        desc = add_parentheses(desc)
+        name = add_parentheses(name)
 
-    return desc
+    return name
 
 
-def description_from_operator(operator, *instances, reverse):
+def new_name_with_operator(operator, *instances, reverse):
     """Returns a string describing the function resulting from combining self and other through
     the specified operation. The precedence of the operation is compared to the precedence of the last operation
     on self and other to determine whether parentheses are required."""
-    descriptions = [_get_desc(instance, operator.precedence) for instance in instances]
+    names = [_get_name(instance, operator.precedence) for instance in instances]
 
     if reverse:
-        descriptions = reversed(descriptions)
-    return operator.format(*descriptions)
+        names = reversed(names)
+    return operator.format(*names)
 
 
 def lazy_func_method_factory(operator, reverse=False):
@@ -60,8 +58,8 @@ def lazy_func_method_factory(operator, reverse=False):
 
     def inner(*instances):
         new_func = function_from_operator(operator, *instances)
-        new_desc = description_from_operator(operator, *instances, reverse=reverse)
-        mf = LazyFunc(func=new_func, description=new_desc)
+        new_name = new_name_with_operator(operator, *instances, reverse=reverse)
+        mf = LazyFunc(func=new_func, name=new_name)
         mf._precedence = operator.precedence
         return mf
 
@@ -93,36 +91,33 @@ class LazyFunc(metaclass=lazy_func_meta):
     """Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,
     including LazyFunc instances."""
 
-    def __init__(self, func, *args, description=None, **kwargs):
+    def __init__(self, func, *args, name=None, **kwargs):
         self.func = func
         self.args = args
         self.kwargs = kwargs
-        self._description = description
+        self._name = name
         self._precedence = None
 
     @property
-    def description(self):
+    def __name__(self):
         """Description of the function wrapped by the LazyFunc. This information is presented in the
         __repr__. This defaults to the __name__ of the wrapped function, or can be set through the
-        description keyword argument. The description is also updated by arithmetic operations are applied."""
-        if self._description is None:
+        __name__ keyword argument. The __name__ is also updated by arithmetic operations are applied."""
+        if self._name is None:
             return callable_name(self.func)
         else:
-            return self._description
+            return self._name
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.description})"
+        return f"{self.__class__.__name__}({self.__name__})"
 
     def __call__(self, *args, **kwargs):
         if callable(args[0]):
             operator_precedence = 17
             other_func, *args = args
             new_func = lambda *y: self.func(other_func(*y), *args, **kwargs)
-            if isinstance(other_func, LazyFunc):
-                new_desc = _get_desc(self, operator_precedence) + _get_desc(other_func, operator_precedence)
-            else:
-                new_desc = _get_desc(self, operator_precedence) + '(' + callable_name(other_func) + ')'
-            mf = LazyFunc(func=new_func, description=new_desc)
+            new_name = _get_name(self, operator_precedence) + '(' + _get_name(other_func, operator_precedence) + ')'
+            mf = LazyFunc(func=new_func, name=new_name)
             mf._precedence = operator_precedence
             return mf
         else:
@@ -133,7 +128,7 @@ class LazyFunc(metaclass=lazy_func_meta):
         between the wrapped LazyFunc and other. Therefore, this method exists to check whether two unevaluated
         LazyFunc objects are equal, without calling them and comparing the results."""
         try:
-            equal = self.description == other.description
+            equal = self.__name__ == other.__name__
         except AttributeError:
             msg = 'Can only compare a LazyFunc instance with another LazyFunc'
             raise TypeError(msg)

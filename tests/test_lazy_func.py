@@ -27,7 +27,7 @@ class MultiParameterClass:
 def test_repr():
     mf_f = LazyFunc(single_parameter_function)
     assert str(mf_f) == 'LazyFunc(single_parameter_function)'
-    mf_f_with_desc = LazyFunc(single_parameter_function, description='my_single_parameter_function')
+    mf_f_with_desc = LazyFunc(single_parameter_function, name='my_single_parameter_function')
     assert str(mf_f_with_desc) == 'LazyFunc(my_single_parameter_function)'
     mf_j = LazyFunc(MultiParameterClass())
     assert str(mf_j) == 'LazyFunc(MultiParameterClass)'
