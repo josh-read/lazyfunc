@@ -163,7 +163,7 @@ class LazyFunc(metaclass=lazy_func_meta):
             other_func, *args = args
             new_func = lambda *y: self.func(other_func(*y), *args, **kwargs)
             if isinstance(other_func, LazyFunc):
-                new_desc = _get_desc(self, operator_precedence) + _get_desc(other_func, operator_precedence)
+                new_desc = _get_desc(self, operator_precedence) + '(' + _get_desc(other_func, operator_precedence) + ')'
             else:
                 new_desc = _get_desc(self, operator_precedence) + '(' + callable_name(other_func) + ')'
             mf = LazyFunc(func=new_func, description=new_desc)
