@@ -1,0 +1,2413 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../explanation/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Reference - lazyfunc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lazyfunc.lazy_func.LazyFunc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="lazyfunc" class="md-header__button md-logo" aria-label="lazyfunc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            lazyfunc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="lazyfunc" class="md-nav__button md-logo" aria-label="lazyfunc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    lazyfunc
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Reference
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc" class="md-nav__link">
+    lazyfunc.lazy_func.LazyFunc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.description" class="md-nav__link">
+    description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__and__" class="md-nav__link">
+    __and__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__eq__" class="md-nav__link">
+    __eq__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__floordiv__" class="md-nav__link">
+    __floordiv__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__ge__" class="md-nav__link">
+    __ge__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__gt__" class="md-nav__link">
+    __gt__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__invert__" class="md-nav__link">
+    __invert__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__le__" class="md-nav__link">
+    __le__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__lshift__" class="md-nav__link">
+    __lshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__lt__" class="md-nav__link">
+    __lt__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__matmul__" class="md-nav__link">
+    __matmul__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__mod__" class="md-nav__link">
+    __mod__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__mul__" class="md-nav__link">
+    __mul__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__ne__" class="md-nav__link">
+    __ne__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__neg__" class="md-nav__link">
+    __neg__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__or__" class="md-nav__link">
+    __or__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__pos__" class="md-nav__link">
+    __pos__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__pow__" class="md-nav__link">
+    __pow__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__radd__" class="md-nav__link">
+    __radd__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rand__" class="md-nav__link">
+    __rand__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rfloordiv__" class="md-nav__link">
+    __rfloordiv__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rlshift__" class="md-nav__link">
+    __rlshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rmatmul__" class="md-nav__link">
+    __rmatmul__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rmod__" class="md-nav__link">
+    __rmod__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rmul__" class="md-nav__link">
+    __rmul__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__ror__" class="md-nav__link">
+    __ror__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rpow__" class="md-nav__link">
+    __rpow__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rrshift__" class="md-nav__link">
+    __rrshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rshift__" class="md-nav__link">
+    __rshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rsub__" class="md-nav__link">
+    __rsub__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rtruediv__" class="md-nav__link">
+    __rtruediv__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rxor__" class="md-nav__link">
+    __rxor__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__sub__" class="md-nav__link">
+    __sub__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__truediv__" class="md-nav__link">
+    __truediv__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__xor__" class="md-nav__link">
+    __xor__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.is_equal" class="md-nav__link">
+    is_equal()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/" class="md-nav__link">
+        Explanation
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc" class="md-nav__link">
+    lazyfunc.lazy_func.LazyFunc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.description" class="md-nav__link">
+    description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__and__" class="md-nav__link">
+    __and__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__eq__" class="md-nav__link">
+    __eq__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__floordiv__" class="md-nav__link">
+    __floordiv__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__ge__" class="md-nav__link">
+    __ge__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__gt__" class="md-nav__link">
+    __gt__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__invert__" class="md-nav__link">
+    __invert__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__le__" class="md-nav__link">
+    __le__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__lshift__" class="md-nav__link">
+    __lshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__lt__" class="md-nav__link">
+    __lt__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__matmul__" class="md-nav__link">
+    __matmul__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__mod__" class="md-nav__link">
+    __mod__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__mul__" class="md-nav__link">
+    __mul__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__ne__" class="md-nav__link">
+    __ne__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__neg__" class="md-nav__link">
+    __neg__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__or__" class="md-nav__link">
+    __or__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__pos__" class="md-nav__link">
+    __pos__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__pow__" class="md-nav__link">
+    __pow__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__radd__" class="md-nav__link">
+    __radd__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rand__" class="md-nav__link">
+    __rand__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rfloordiv__" class="md-nav__link">
+    __rfloordiv__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rlshift__" class="md-nav__link">
+    __rlshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rmatmul__" class="md-nav__link">
+    __rmatmul__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rmod__" class="md-nav__link">
+    __rmod__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rmul__" class="md-nav__link">
+    __rmul__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__ror__" class="md-nav__link">
+    __ror__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rpow__" class="md-nav__link">
+    __rpow__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rrshift__" class="md-nav__link">
+    __rrshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rshift__" class="md-nav__link">
+    __rshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rsub__" class="md-nav__link">
+    __rsub__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rtruediv__" class="md-nav__link">
+    __rtruediv__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__rxor__" class="md-nav__link">
+    __rxor__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__sub__" class="md-nav__link">
+    __sub__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__truediv__" class="md-nav__link">
+    __truediv__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.__xor__" class="md-nav__link">
+    __xor__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc.lazy_func.LazyFunc.is_equal" class="md-nav__link">
+    is_equal()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Reference</h1>
+
+<p>Reference for the <code>LazyFunc</code> class.</p>
+
+
+  <div class="doc doc-object doc-class">
+
+<a id="lazyfunc.lazy_func.LazyFunc"></a>
+    <div class="doc doc-contents first">
+
+      <p>Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,
+including LazyFunc instances.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LazyFunc</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">lazy_func_meta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,</span>
+<span class="sd">    including LazyFunc instances.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Defaults to the name of the wrapped callable, but can be set by the user at object initialisation. Also</span>
+<span class="sd">        updated when operations are applied with other callables.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; def my_function(x):</span>
+<span class="sd">            ...     return x</span>
+<span class="sd">            &gt;&gt;&gt; lf_auto = LazyFunc(my_function)</span>
+<span class="sd">            &gt;&gt;&gt; lf_auto.description</span>
+<span class="sd">            &#39;my_function&#39;</span>
+<span class="sd">            &gt;&gt;&gt; lf_named = LazyFunc(my_function, description=&#39;my_named_function&#39;)</span>
+<span class="sd">            &gt;&gt;&gt; lf_named.description</span>
+<span class="sd">            &#39;my_named_function&#39;</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A string describing the wrapped function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">callable_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">__name__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Alias of the LazyFunc description.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either calls the wrapped function with the provided args and kwargs, or if the first argument is a callable,</span>
+<span class="sd">        returns a new LazyFunc object of LazyFunc(args[0](self)).</span>
+
+<span class="sd">        When calling a LazyFunc instance, if the first argument is NOT a callable, it behaves exactly as the unwrapped</span>
+<span class="sd">        callable.</span>
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; @LazyFunc</span>
+<span class="sd">            ... def my_function(x):</span>
+<span class="sd">            ...     return 2 * x</span>
+<span class="sd">            ...</span>
+<span class="sd">            &gt;&gt;&gt; my_function(&#39;foo&#39;)  # first argument is not callable</span>
+<span class="sd">            &#39;foofoo&#39;</span>
+<span class="sd">            &gt;&gt;&gt; import builtins</span>
+<span class="sd">            &gt;&gt;&gt; builtin_min = builtins.min</span>
+<span class="sd">            &gt;&gt;&gt; min = LazyFunc(min)</span>
+<span class="sd">            &gt;&gt;&gt; min([3, 1, 4, 1, 5, 9])  # first argument is not callable</span>
+<span class="sd">            1</span>
+<span class="sd">            &gt;&gt;&gt; min(&#39;lazy&#39;, &#39;function&#39;, key=lambda s: s[1])  # first argument is not callable</span>
+<span class="sd">            &#39;lazy&#39;</span>
+<span class="sd">            &gt;&gt;&gt; min_of_my_function = min(my_function)  # first argument is callable</span>
+<span class="sd">            &gt;&gt;&gt; min_of_my_function</span>
+<span class="sd">            LazyFunc(min(my_function))</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args: Positional arguments to be passed to wrapped function.</span>
+<span class="sd">            kwargs: Keyword arguments to be passed to wrapped function.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Either the result of the wrapped function evaluated with the supplied args and kwargs, or a new LazyFunc</span>
+<span class="sd">            instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">operator_precedence</span> <span class="o">=</span> <span class="mi">17</span>
+            <span class="n">other_func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+            <span class="n">new_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">y</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">other_func</span><span class="p">(</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">new_desc</span> <span class="o">=</span> <span class="n">_get_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_precedence</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="n">callable_name</span><span class="p">(</span><span class="n">other_func</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+            <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+            <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator_precedence</span>
+            <span class="k">return</span> <span class="n">mf</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks for equality between self and other.</span>
+
+<span class="sd">        To stay consistent with LazyFunc&#39;s other dunder methods, the `__eq__` method lazily compares equality</span>
+<span class="sd">        between the wrapped LazyFunc and other. Therefore, this method exists to check whether two unevaluated</span>
+<span class="sd">        LazyFunc objects are equal, without calling them and comparing the results.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; def my_function(x):</span>
+<span class="sd">            ...     return x</span>
+<span class="sd">            &gt;&gt;&gt; lf_auto_1 = LazyFunc(my_function)</span>
+<span class="sd">            &gt;&gt;&gt; lf_auto_2 = LazyFunc(my_function)</span>
+<span class="sd">            &gt;&gt;&gt; lf_named = LazyFunc(my_function, description=&#39;my_named_function&#39;)</span>
+<span class="sd">            &gt;&gt;&gt; lf_auto_1.is_equal(lf_auto_2)</span>
+<span class="sd">            True</span>
+<span class="sd">            &gt;&gt;&gt; lf_auto_1.is_equal(lf_named)</span>
+<span class="sd">            False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">equal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">description</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Can only compare a LazyFunc instance with another LazyFunc&#39;</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">equal</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;LazyFunc descriptions found to be not equal though may still be equivalent.&#39;</span>
+            <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">equal</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.description" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">description</span><span class="p">:</span> <span class="nb">str</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Defaults to the name of the wrapped callable, but can be set by the user at object initialisation. Also
+updated when operations are applied with other callables.</p>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">x</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lf_auto</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">my_function</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lf_auto</span><span class="o">.</span><span class="n">description</span>
+<span class="s1">&#39;my_function&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lf_named</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">my_function</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;my_named_function&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lf_named</span><span class="o">.</span><span class="n">description</span>
+<span class="s1">&#39;my_named_function&#39;</span>
+</code></pre></div>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>A string describing the wrapped function.</p></td>
+    </tr>
+  </tbody>
+</table>    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__add__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__add__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self + other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__and__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__and__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self &amp; other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Either calls the wrapped function with the provided args and kwargs, or if the first argument is a callable,
+returns a new LazyFunc object of LazyFunc(args<a href="self">0</a>).</p>
+<p>When calling a LazyFunc instance, if the first argument is NOT a callable, it behaves exactly as the unwrapped
+callable.</p>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nd">@LazyFunc</span>
+<span class="o">...</span> <span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_function</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>  <span class="c1"># first argument is not callable</span>
+<span class="s1">&#39;foofoo&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">builtins</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">builtin_min</span> <span class="o">=</span> <span class="n">builtins</span><span class="o">.</span><span class="n">min</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>  <span class="c1"># first argument is not callable</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="s1">&#39;lazy&#39;</span><span class="p">,</span> <span class="s1">&#39;function&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># first argument is not callable</span>
+<span class="s1">&#39;lazy&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">min_of_my_function</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">my_function</span><span class="p">)</span>  <span class="c1"># first argument is callable</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">min_of_my_function</span>
+<span class="n">LazyFunc</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">my_function</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>args</code></td>
+        <td></td>
+        <td><p>Positional arguments to be passed to wrapped function.</p></td>
+        <td><code>()</code></td>
+      </tr>
+      <tr>
+        <td><code>kwargs</code></td>
+        <td></td>
+        <td><p>Keyword arguments to be passed to wrapped function.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>object</code></td>
+      <td><p>Either the result of the wrapped function evaluated with the supplied args and kwargs, or a new LazyFunc
+instance.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Either calls the wrapped function with the provided args and kwargs, or if the first argument is a callable,</span>
+<span class="sd">    returns a new LazyFunc object of LazyFunc(args[0](self)).</span>
+
+<span class="sd">    When calling a LazyFunc instance, if the first argument is NOT a callable, it behaves exactly as the unwrapped</span>
+<span class="sd">    callable.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; @LazyFunc</span>
+<span class="sd">        ... def my_function(x):</span>
+<span class="sd">        ...     return 2 * x</span>
+<span class="sd">        ...</span>
+<span class="sd">        &gt;&gt;&gt; my_function(&#39;foo&#39;)  # first argument is not callable</span>
+<span class="sd">        &#39;foofoo&#39;</span>
+<span class="sd">        &gt;&gt;&gt; import builtins</span>
+<span class="sd">        &gt;&gt;&gt; builtin_min = builtins.min</span>
+<span class="sd">        &gt;&gt;&gt; min = LazyFunc(min)</span>
+<span class="sd">        &gt;&gt;&gt; min([3, 1, 4, 1, 5, 9])  # first argument is not callable</span>
+<span class="sd">        1</span>
+<span class="sd">        &gt;&gt;&gt; min(&#39;lazy&#39;, &#39;function&#39;, key=lambda s: s[1])  # first argument is not callable</span>
+<span class="sd">        &#39;lazy&#39;</span>
+<span class="sd">        &gt;&gt;&gt; min_of_my_function = min(my_function)  # first argument is callable</span>
+<span class="sd">        &gt;&gt;&gt; min_of_my_function</span>
+<span class="sd">        LazyFunc(min(my_function))</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        args: Positional arguments to be passed to wrapped function.</span>
+<span class="sd">        kwargs: Keyword arguments to be passed to wrapped function.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Either the result of the wrapped function evaluated with the supplied args and kwargs, or a new LazyFunc</span>
+<span class="sd">        instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">operator_precedence</span> <span class="o">=</span> <span class="mi">17</span>
+        <span class="n">other_func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="n">new_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">y</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">other_func</span><span class="p">(</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">new_desc</span> <span class="o">=</span> <span class="n">_get_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_precedence</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="n">callable_name</span><span class="p">(</span><span class="n">other_func</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+        <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+        <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator_precedence</span>
+        <span class="k">return</span> <span class="n">mf</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__eq__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__eq__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self == other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__floordiv__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__floordiv__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self // other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__ge__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__ge__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self &gt;= other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__gt__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__gt__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self &gt; other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__invert__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__invert__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(~self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__le__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__le__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self &lt;= other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__lshift__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__lshift__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self &lt;&lt; other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__lt__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__lt__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self &lt; other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__matmul__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__matmul__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self @ other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__mod__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__mod__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self % other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__mul__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__mul__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self * other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__ne__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__ne__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self != other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__neg__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__neg__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(-self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__or__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__or__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self | other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__pos__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__pos__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(+self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__pow__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__pow__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self ** other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__radd__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__radd__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other + self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rand__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rand__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other &amp; self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rfloordiv__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rfloordiv__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other // self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rlshift__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rlshift__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other &lt;&lt; self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rmatmul__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rmatmul__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other @ self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rmod__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rmod__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other % self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rmul__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rmul__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other * self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__ror__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__ror__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other | self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rpow__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rpow__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other ** self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rrshift__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rrshift__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other &gt;&gt; self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rshift__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rshift__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self &gt;&gt; other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rsub__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rsub__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other - self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rtruediv__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rtruediv__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other / self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__rxor__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__rxor__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(other ^ self), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__sub__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__sub__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self - other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__truediv__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__truediv__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self / other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.__xor__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__xor__</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return new instance LazyFunc(self ^ other), where other may be a scalar value or any other callable including another LazyFunc instance.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
+    <span class="k">return</span> <span class="n">mf</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="lazyfunc.lazy_func.LazyFunc.is_equal" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">is_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Checks for equality between self and other.</p>
+<p>To stay consistent with LazyFunc's other dunder methods, the <code>__eq__</code> method lazily compares equality
+between the wrapped LazyFunc and other. Therefore, this method exists to check whether two unevaluated
+LazyFunc objects are equal, without calling them and comparing the results.</p>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">x</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lf_auto_1</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">my_function</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lf_auto_2</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">my_function</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lf_named</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">my_function</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;my_named_function&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lf_auto_1</span><span class="o">.</span><span class="n">is_equal</span><span class="p">(</span><span class="n">lf_auto_2</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lf_auto_1</span><span class="o">.</span><span class="n">is_equal</span><span class="p">(</span><span class="n">lf_named</span><span class="p">)</span>
+<span class="kc">False</span>
+</code></pre></div>
+
+        <details class="quote">
+          <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks for equality between self and other.</span>
+
+<span class="sd">    To stay consistent with LazyFunc&#39;s other dunder methods, the `__eq__` method lazily compares equality</span>
+<span class="sd">    between the wrapped LazyFunc and other. Therefore, this method exists to check whether two unevaluated</span>
+<span class="sd">    LazyFunc objects are equal, without calling them and comparing the results.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; def my_function(x):</span>
+<span class="sd">        ...     return x</span>
+<span class="sd">        &gt;&gt;&gt; lf_auto_1 = LazyFunc(my_function)</span>
+<span class="sd">        &gt;&gt;&gt; lf_auto_2 = LazyFunc(my_function)</span>
+<span class="sd">        &gt;&gt;&gt; lf_named = LazyFunc(my_function, description=&#39;my_named_function&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; lf_auto_1.is_equal(lf_auto_2)</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; lf_auto_1.is_equal(lf_named)</span>
+<span class="sd">        False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">equal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">description</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Can only compare a LazyFunc instance with another LazyFunc&#39;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">equal</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;LazyFunc descriptions found to be not equal though may still be equivalent.&#39;</span>
+        <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">equal</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>
