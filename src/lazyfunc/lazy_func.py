@@ -1,8 +1,10 @@
+import inspect
 import numbers
 from warnings import warn
 
-from lazyfunc.utils import callable_name, add_parentheses, insert
+from lazyfunc.arguments import new_diadic_function
 from lazyfunc.operators import operators
+from lazyfunc.utils import callable_name, add_parentheses, insert
 
 
 def function_from_operator(operator, *instances):
@@ -10,13 +12,13 @@ def function_from_operator(operator, *instances):
     Self must be of type LazyFunc, other may be a scalar value or any callable including LazyFunc"""
     if operator.number_of_operands == 1:
         self, = instances
-        return lambda *x: operator.func(self(*x))
+        return lambda *args, **kwargs: operator.func(self(*args, **kwargs))
     elif operator.number_of_operands == 2:
         self, other = instances
         if callable(other):
-            return lambda *x: operator.func(self(*x), other(*x))
+            return new_diadic_function(operator, *instances)
         elif isinstance(other, numbers.Real):
-            return lambda *x: operator.func(self(*x), other)
+            return lambda *args, **kwargs: operator.func(self(*args, **kwargs), other)
         else:
             msg = f"Cannot call {operator.name} on LazyFunc and type {type(other)}. " \
                   f"Must be either callable or a scalar value."
@@ -97,6 +99,10 @@ class LazyFunc(metaclass=lazy_func_meta):
         self.kwargs = kwargs
         self._description = description
         self._precedence = None
+
+    @property
+    def __signature__(self):
+        return inspect.signature(self.func)
 
     @property
     def description(self) -> str:
