@@ -42,7 +42,8 @@ def test_mul():
     assert str(mf_f2) == 'LazyFunc(single_parameter_function * 2)'
     assert np.allclose(mf_f2(x), 2*x)
     with pytest.raises(TypeError):
-        mf_f * 'foo'
+        mf_f_mul_foo = mf_f * 'foo'
+        mf_f_mul_foo(0.)
     # test LazyFunc operation name and docstring
     assert LazyFunc.__mul__.__name__ == '__mul__'
     assert LazyFunc.__mul__.__doc__ == 'Return new instance LazyFunc(self * other), where other may be a scalar value or any other callable including another LazyFunc instance.'
@@ -66,7 +67,8 @@ def test_add():
     assert str(mf_f2) == 'LazyFunc(single_parameter_function + 2)'
     assert np.allclose(mf_f2(x), x + 2)
     with pytest.raises(TypeError):
-        mf_f + 'foo'
+        mf_f_add_foo = mf_f + 'foo'
+        mf_f_add_foo(0)
 
 
 def test_radd():
@@ -87,4 +89,5 @@ def test_radd():
     assert str(mf_2f) == 'LazyFunc(2 + single_parameter_function)'
     assert np.allclose(mf_2f(x), x + 2)
     with pytest.raises(TypeError):
-        mf_f + 'foo'
+        foo_add_mf_f = 'foo' + mf_f
+        foo_add_mf_f(0)

@@ -1,37 +1,42 @@
 import inspect
-import numbers
 from warnings import warn
 
-from lazyfunc.arguments import new_diadic_function
+from lazyfunc.arguments import ARGUMENT_ORDER
 from lazyfunc.operators import operators
 from lazyfunc.utils import callable_name, add_parentheses, insert
 
 
-def function_from_operator(operator, *instances):
-    """Returns a function by combining self and other through a specified operation.
-    Self must be of type LazyFunc, other may be a scalar value or any callable including LazyFunc"""
-    if operator.number_of_operands == 1:
-        self, = instances
-        def new_func(*args, **kwargs):
-            return operator.func(self(*args, **kwargs))
-        new_func.__signature__ = self.__signature__
-        return new_func
-    elif operator.number_of_operands == 2:
-        self, other = instances
-        if callable(other):
-            return new_diadic_function(operator, *instances)
-        elif isinstance(other, numbers.Real):
-            def new_func(*args, **kwargs):
-                return operator.func(self(*args, **kwargs), other)
-            new_func.__signature__ = self.__signature__
-            return new_func
-        else:
-            msg = f"Cannot call {operator.name} on LazyFunc and type {type(other)}. " \
-                  f"Must be either callable or a scalar value."
-            raise TypeError(msg)
-    else:
-        msg = 'Handling of ternary operators not yet implemented!'
-        raise NotImplementedError(msg)
+def new_function(operator, *instances):
+
+    def inner(*args, **kwargs):
+        operator_args = []
+        for obj in instances:
+            if not callable(obj):
+                operator_args.append(obj)
+            else:
+                callable_kwargs = {}
+                for key in kwargs:
+                    if key in inspect.signature(obj).parameters:
+                        callable_kwargs[key] = kwargs[key]
+                operator_args.append(obj(*args, **callable_kwargs))
+        return operator.func(*operator_args)
+
+    return inner
+
+
+def build_new_signature(instances):
+    callables = [obj for obj in instances if callable(obj)]
+    if len(callables) == 1:
+        return instances[0].__signature__
+    else:  # build new signature merging any duplicated arguments
+        combined_params = {}
+        instance_parameters = [inspect.signature(obj).parameters for obj in callables]
+        for kind in ARGUMENT_ORDER:  # positional arguments must come first, default arguments must come last
+            for params in instance_parameters:  # arguments of same kind from first instance come before last instance
+                for name, param in params.items():
+                    if param.kind == kind and name not in combined_params:
+                        combined_params[name] = param
+        return inspect.Signature(parameters=combined_params.values())
 
 
 def _get_desc(instance, operator_precedence):
@@ -65,7 +70,8 @@ def lazy_func_method_factory(operator, reverse=False):
     to LazyFunc."""
 
     def inner(*instances):
-        new_func = function_from_operator(operator, *instances)
+        new_func = new_function(operator, *instances)
+        new_func.__signature__ = build_new_signature(instances)
         new_desc = description_from_operator(operator, *instances, reverse=reverse)
         mf = LazyFunc(func=new_func, description=new_desc)
         mf._precedence = operator.precedence
