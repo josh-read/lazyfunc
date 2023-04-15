@@ -36,15 +36,24 @@ Source = "https://github.com/josh-read/lazyfunc"
 virtual = ".venv"
 
 [project.optional-dependencies]
-tests = [
-  "pytest",
-  "pytest-cov",
+examples = [
   "numpy",
+  "scipy",
+  "matplotlib",
 ]
 docs = [
   "mkdocs",
   "mkdocstrings-python-legacy",
   "mkdocs-material",
+]
+tests = [
+  "pytest",
+  "numpy",
+]
+all = [
+  "lazyfunc[examples]",
+  "lazyfunc[docs]",
+  "lazyfunc[tests]",
 ]
 
 [tool.coverage.run]
