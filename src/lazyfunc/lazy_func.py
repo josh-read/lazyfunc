@@ -99,11 +99,10 @@ class LazyFunc(metaclass=lazy_func_meta):
     """Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,
     including LazyFunc instances."""
 
-    def __init__(self, func, *args, description=None, **kwargs):
+    def __init__(self, func, description=None, **kwargs):
         self.func = func
-        self.args = args
-        self.kwargs = kwargs
         self._description = description
+        self._kwargs = self._default_kwargs = kwargs
         self._precedence = None
 
     @property
@@ -170,7 +169,7 @@ class LazyFunc(metaclass=lazy_func_meta):
             kwargs: Keyword arguments to be passed to wrapped function.
 
         Returns:
-            Either the result of the wrapped function evaluated with the supplied args and kwargs, or a new LazyFunc
+            Either the result of the wrapped function evaluated with the supplied args and _kwargs, or a new LazyFunc
             instance.
         """
         if callable(args[0]):
@@ -181,8 +180,19 @@ class LazyFunc(metaclass=lazy_func_meta):
             mf = LazyFunc(func=new_func, description=new_desc)
             mf._precedence = operator_precedence
             return mf
-        else:
-            return self.func(*args, *self.args, **kwargs, **self.kwargs)
+        else:  # when the function is called the kwargs supplied to the call take precedence over those set elsewhere
+            final_kwargs = self._kwargs | kwargs
+            return self.func(*args, **final_kwargs)
+
+    def set_kwargs(self, **kwargs):
+        self._kwargs = kwargs
+        return self
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self._kwargs = self._default_kwargs
 
     def is_equal(self, other: callable) -> bool:
         """Checks for equality between self and other.

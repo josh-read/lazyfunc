@@ -35,11 +35,12 @@ impedance = 50
 measured_voltage_spectrum = bremsstrahlung_spectrum * transmission * responsivity / impedance
 print(measured_voltage_spectrum(1e3, temperature=100))
 
-measured_voltage_spectrum.kwargs = {'temperature': 100}
-# measured_voltage = quad(measured_voltage_spectrum, 0, 30e3)
-# print(measured_voltage)
-#
-# fig, ax = plt.subplots()
-# x = np.linspace(0, 30e3, 1000)
-# ax.plot(x, measured_voltage_spectrum(x))
-# plt.show()
+with measured_voltage_spectrum.set_kwargs(temperature=100):
+    measured_voltage = quad(measured_voltage_spectrum, 0, 30e3)
+    print(measured_voltage)
+
+    fig, ax = plt.subplots()
+    x = np.linspace(0, 30e3, 1000)
+    ax.plot(x, measured_voltage_spectrum(x))
+
+plt.show()
