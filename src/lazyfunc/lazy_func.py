@@ -12,13 +12,19 @@ def function_from_operator(operator, *instances):
     Self must be of type LazyFunc, other may be a scalar value or any callable including LazyFunc"""
     if operator.number_of_operands == 1:
         self, = instances
-        return lambda *args, **kwargs: operator.func(self(*args, **kwargs))
+        def new_func(*args, **kwargs):
+            return operator.func(self(*args, **kwargs))
+        new_func.__signature__ = self.__signature__
+        return new_func
     elif operator.number_of_operands == 2:
         self, other = instances
         if callable(other):
             return new_diadic_function(operator, *instances)
         elif isinstance(other, numbers.Real):
-            return lambda *args, **kwargs: operator.func(self(*args, **kwargs), other)
+            def new_func(*args, **kwargs):
+                return operator.func(self(*args, **kwargs), other)
+            new_func.__signature__ = self.__signature__
+            return new_func
         else:
             msg = f"Cannot call {operator.name} on LazyFunc and type {type(other)}. " \
                   f"Must be either callable or a scalar value."
