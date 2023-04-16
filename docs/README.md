@@ -1,11 +1,23 @@
-# lazyfunc
+<h1 align="center">lazyfunc</h1>
 
-[![PyPI - Version](https://img.shields.io/pypi/v/lazyfunc.svg)](https://pypi.org/project/lazyfunc)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/lazyfunc.svg)](https://pypi.org/project/lazyfunc)
+<p align="center">Wrapper for callables in Python, enabling many operations between them, with lazy evaluation.</p>
 
-Wrapper for callables in Python, enabling many operations between them, with lazy evaluation.
+<p align="center">
+  <a href="https://github.com/josh-read/lazyfunc/actions/workflows/ci.yml"><img
+    src="https://img.shields.io/github/actions/workflow/status/josh-read/lazyfunc/ci.yml?label=ci"
+    alt="ci"
+  /></a>
+  <a href="https://josh-read.github.io/lazyfunc/"><img
+    src="https://img.shields.io/badge/docs-mkdocs-blue" 
+    alt="docs"
+  /></a>
+  <a href="https://pypi.org/project/lazyfunc/"><img
+    src="https://img.shields.io/pypi/v/lazyfunc" 
+    alt="pypi"
+  /></a>
+</p>
 
------
+---
 
 **Table of Contents**
 
