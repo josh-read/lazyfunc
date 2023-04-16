@@ -123,8 +123,7 @@ class LazyFuncMeta(type):
 
 
 class LazyFunc(metaclass=LazyFuncMeta):
-    """Wrap a callable object enabling arithmetic operations between it and scalar
-    values or any other callables, including LazyFunc instances."""
+    """Operations between callables, with lazy evaluation."""
 
     def __init__(self, func, description=None, **kwargs):
         self.func = func
