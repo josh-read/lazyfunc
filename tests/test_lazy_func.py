@@ -13,30 +13,30 @@ def multi_parameter_function(x, y):
 
 
 class SingleParameterClass:
-
     def __call__(self, x):
         return x
 
 
 class MultiParameterClass:
-
     def __call__(self, x, y):
         return x + y
 
 
 def test_repr():
     mf_f = LazyFunc(single_parameter_function)
-    assert str(mf_f) == 'LazyFunc(single_parameter_function)'
-    mf_f_with_desc = LazyFunc(single_parameter_function, description='my_single_parameter_function')
-    assert str(mf_f_with_desc) == 'LazyFunc(my_single_parameter_function)'
+    assert str(mf_f) == "LazyFunc(single_parameter_function)"
+    mf_f_with_desc = LazyFunc(
+        single_parameter_function, description="my_single_parameter_function"
+    )
+    assert str(mf_f_with_desc) == "LazyFunc(my_single_parameter_function)"
     mf_j = LazyFunc(MultiParameterClass())
-    assert str(mf_j) == 'LazyFunc(MultiParameterClass)'
+    assert str(mf_j) == "LazyFunc(MultiParameterClass)"
 
     @LazyFunc
     def abc(x):
         return x
 
-    assert str(abc + abc) == 'LazyFunc(abc + abc)'
+    assert str(abc + abc) == "LazyFunc(abc + abc)"
 
 
 def test_call():
@@ -59,7 +59,9 @@ def test_equality():
     mf_single_parameter_function = LazyFunc(single_parameter_function)
     mf_single_parameter_class = LazyFunc(SingleParameterClass())
     assert (mf_single_parameter_function + mf_single_parameter_class).is_equal(
-        mf_single_parameter_function + mf_single_parameter_class)
+        mf_single_parameter_function + mf_single_parameter_class
+    )
     with pytest.warns(UserWarning):
         assert not (mf_single_parameter_function + mf_single_parameter_class).is_equal(
-             mf_single_parameter_class + mf_single_parameter_function)
+            mf_single_parameter_class + mf_single_parameter_function
+        )

@@ -12,7 +12,7 @@ def bremsstrahlung_spectrum(energy, /, temperature):
 
     Equivalent to the bremsstrahlung power spectrum at high energies.
     """
-    return np.exp(- energy / temperature)
+    return np.exp(-energy / temperature)
 
 
 @LazyFunc
@@ -23,16 +23,21 @@ def responsivity(energy):
     if energy < threshold:
         return 0.25
     else:
-        return 0.25 * np.exp(-(energy - threshold)/threshold)
+        return 0.25 * np.exp(-(energy - threshold) / threshold)
 
 
-henke_data = np.genfromtxt('data.txt', skip_header=2)
-transmission = LazyFunc(interp1d(*henke_data.T, bounds_error=False, fill_value=0.), description='transmission')
+henke_data = np.genfromtxt("data.txt", skip_header=2)
+transmission = LazyFunc(
+    interp1d(*henke_data.T, bounds_error=False, fill_value=0.0),
+    description="transmission",
+)
 
 impedance = 50
 
 
-measured_voltage_spectrum = bremsstrahlung_spectrum * transmission * responsivity / impedance
+measured_voltage_spectrum = (
+    bremsstrahlung_spectrum * transmission * responsivity / impedance
+)
 print(measured_voltage_spectrum(1e3, temperature=100))
 
 with measured_voltage_spectrum.set_kwargs(temperature=100):

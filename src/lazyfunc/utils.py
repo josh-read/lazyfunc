@@ -8,7 +8,7 @@ def callable_name(func):
 
 def add_parentheses(s):
     """Add parentheses around the string s."""
-    return ''.join(['(', s, ')'])
+    return "".join(["(", s, ")"])
 
 
 def insert(original_string, inserted_string, index):

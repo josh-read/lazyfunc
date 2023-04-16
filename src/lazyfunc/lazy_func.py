@@ -7,13 +7,14 @@ from lazyfunc.utils import callable_name, add_parentheses, insert
 
 
 class LazyFuncMeta(type):
-
     def __new__(mcs, name, bases, attrs):
         for operator in operators:
             attrs[operator.name] = mcs.lazy_func_method_factory(operator)
             if operator.has_reverse:
-                reverse_operator_name = insert(operator.name, 'r', index=2)
-                attrs[reverse_operator_name] = mcs.lazy_func_method_factory(operator, reverse=True)
+                reverse_operator_name = insert(operator.name, "r", index=2)
+                attrs[reverse_operator_name] = mcs.lazy_func_method_factory(
+                    operator, reverse=True
+                )
         return super().__new__(mcs, name, bases, attrs)
 
     @staticmethod
@@ -24,27 +25,30 @@ class LazyFuncMeta(type):
         def inner(*instances):
             new_func = LazyFuncMeta.new_function(operator, *instances)
             new_func.__signature__ = LazyFuncMeta.build_new_signature(instances)
-            new_desc = LazyFuncMeta.description_from_operator(operator, *instances, reverse=reverse)
+            new_desc = LazyFuncMeta.description_from_operator(
+                operator, *instances, reverse=reverse
+            )
             mf = LazyFunc(func=new_func, description=new_desc)
             mf._precedence = operator.precedence
             return mf
 
         if operator.number_of_operands == 1:
-            operation_description = operator.format('self')
+            operation_description = operator.format("self")
         elif operator.number_of_operands == 2:
             if reverse:
-                operation_description = operator.format('other', 'self')
+                operation_description = operator.format("other", "self")
             else:
-                operation_description = operator.format('self', 'other')
+                operation_description = operator.format("self", "other")
 
         inner.__name__ = operator.name
-        inner.__doc__ = f"Return new instance LazyFunc({operation_description}), " \
-                        "where other may be a scalar value or any other callable including another LazyFunc instance."
+        inner.__doc__ = (
+            f"Return new instance LazyFunc({operation_description}), "
+            "where other may be a scalar value or any other callable including another LazyFunc instance."
+        )
         return inner
 
     @staticmethod
     def new_function(operator, *instances):
-
         def inner(*args, **kwargs):
             operator_args = []
             for obj in instances:
@@ -65,7 +69,10 @@ class LazyFuncMeta(type):
         """Returns a string describing the function resulting from combining self and other through
         the specified operation. The precedence of the operation is compared to the precedence of the last operation
         on self and other to determine whether parentheses are required."""
-        descriptions = [LazyFuncMeta._get_desc(instance, operator.precedence) for instance in instances]
+        descriptions = [
+            LazyFuncMeta._get_desc(instance, operator.precedence)
+            for instance in instances
+        ]
 
         if reverse:
             descriptions = reversed(descriptions)
@@ -78,7 +85,7 @@ class LazyFuncMeta(type):
         else:
             desc = str(instance)
 
-        precedence = getattr(instance, '_precedence', None)
+        precedence = getattr(instance, "_precedence", None)
         if precedence is None:
             pass
         elif precedence < operator_precedence:
@@ -93,9 +100,19 @@ class LazyFuncMeta(type):
             return instances[0].__signature__
         else:  # build new signature merging any duplicated arguments
             combined_params = {}
-            instance_parameters = [inspect.signature(obj).parameters for obj in callables]
-            for kind in ARGUMENT_ORDER:  # positional arguments must come first, default arguments must come last
-                for params in instance_parameters:  # arguments of same kind from first instance come before last instance
+            instance_parameters = [
+                inspect.signature(obj).parameters for obj in callables
+            ]
+            for (
+                kind
+            ) in (
+                ARGUMENT_ORDER
+            ):  # positional arguments must come first, default arguments must come last
+                for (
+                    params
+                ) in (
+                    instance_parameters
+                ):  # arguments of same kind from first instance come before last instance
                     for name, param in params.items():
                         if param.kind == kind and name not in combined_params:
                             combined_params[name] = param
@@ -183,7 +200,12 @@ class LazyFunc(metaclass=LazyFuncMeta):
             operator_precedence = 17
             other_func, *args = args
             new_func = lambda *y: self.func(other_func(*y), *args, **kwargs)
-            new_desc = LazyFuncMeta._get_desc(self, operator_precedence) + '(' + callable_name(other_func) + ')'
+            new_desc = (
+                LazyFuncMeta._get_desc(self, operator_precedence)
+                + "("
+                + callable_name(other_func)
+                + ")"
+            )
             mf = LazyFunc(func=new_func, description=new_desc)
             mf._precedence = operator_precedence
             return mf
@@ -222,11 +244,11 @@ class LazyFunc(metaclass=LazyFuncMeta):
         try:
             equal = self.description == other.description
         except AttributeError:
-            msg = 'Can only compare a LazyFunc instance with another LazyFunc'
+            msg = "Can only compare a LazyFunc instance with another LazyFunc"
             raise TypeError(msg)
 
         if not equal:
-            msg = 'LazyFunc descriptions found to be not equal though may still be equivalent.'
+            msg = "LazyFunc descriptions found to be not equal though may still be equivalent."
             warn(msg)
 
         return equal

@@ -6,14 +6,14 @@ from lazyfunc import LazyFunc
 
 
 def square(x, *, foo=2):
-    return x ** 2 + foo
+    return x**2 + foo
 
 
 lf_square = LazyFunc(square)
 
 
 def cube(x, /, bar):
-    return x ** 3 + bar
+    return x**3 + bar
 
 
 def test_signature_propagation_1():
@@ -25,7 +25,7 @@ def test_signature_propagation_2():
 
 
 def test_signature_combination():
-    assert inspect.signature(lf_square + cube).parameters.keys() == {'x', 'foo', 'bar'}
+    assert inspect.signature(lf_square + cube).parameters.keys() == {"x", "foo", "bar"}
 
 
 def test_combined_keywords():
