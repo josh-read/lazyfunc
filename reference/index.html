@@ -12,10 +12,8 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="../explanation/">
-      
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
@@ -23,10 +21,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.558e4712.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
@@ -69,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lazyfunc.lazy_func.LazyFunc" class="md-skip">
+        <a href="#lazyfunc" class="md-skip">
           Skip to content
         </a>
       
@@ -81,7 +79,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="lazyfunc" class="md-header__button md-logo" aria-label="lazyfunc" data-md-component="logo">
       
@@ -173,7 +173,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
       
@@ -198,6 +198,13 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lazyfunc" class="md-nav__link">
+    LazyFunc
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#lazyfunc.lazy_func.LazyFunc" class="md-nav__link">
@@ -470,27 +477,25 @@
     is_equal()
   </a>
   
+    <nav class="md-nav" aria-label="is_equal()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-inplace-operators" class="md-nav__link">
+    No inplace operators.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../explanation/" class="md-nav__link">
-        Explanation
-      </a>
     </li>
   
 
@@ -520,6 +525,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#lazyfunc" class="md-nav__link">
+    LazyFunc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lazyfunc.lazy_func.LazyFunc" class="md-nav__link">
     lazyfunc.lazy_func.LazyFunc
   </a>
@@ -790,6 +802,19 @@
     is_equal()
   </a>
   
+    <nav class="md-nav" aria-label="is_equal()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-inplace-operators" class="md-nav__link">
+    No inplace operators.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -807,10 +832,13 @@
                   
 
 
-
   <h1>Reference</h1>
 
-<p>Reference for the <code>LazyFunc</code> class.</p>
+<p>At the core of <code>lazyfunc</code> is the <code>LazyFunc</code> class. It makes operations
+between callables and arbitrary datatypes possible, by deferring evaluation
+to a later time.</p>
+<p>The methods and properties of the <code>LazyFunc</code> class are listed below.</p>
+<h2 id="lazyfunc">LazyFunc</h2>
 
 
   <div class="doc doc-object doc-class">
@@ -818,26 +846,28 @@
 <a id="lazyfunc.lazy_func.LazyFunc"></a>
     <div class="doc doc-contents first">
 
-      <p>Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,
-including LazyFunc instances.</p>
+      <p>Operations between callables, with lazy evaluation.</p>
 
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LazyFunc</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">lazy_func_meta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,</span>
-<span class="sd">    including LazyFunc instances.&quot;&quot;&quot;</span>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LazyFunc</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">LazyFuncMeta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Operations between callables, with lazy evaluation.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">__signature__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Defaults to the name of the wrapped callable, but can be set by the user at object initialisation. Also</span>
-<span class="sd">        updated when operations are applied with other callables.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Defaults to the name of the wrapped callable, but can be set by the user at</span>
+<span class="sd">        object initialisation. Also updated when operations are applied with other</span>
+<span class="sd">        callables.</span>
 
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; def my_function(x):</span>
@@ -866,11 +896,13 @@ including LazyFunc instances.</p>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">)&quot;</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either calls the wrapped function with the provided args and kwargs, or if the first argument is a callable,</span>
-<span class="sd">        returns a new LazyFunc object of LazyFunc(args[0](self)).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either calls the wrapped function with the provided args and kwargs, or if</span>
+<span class="sd">        the first argument is a callable, returns a new LazyFunc object of</span>
+<span class="sd">        LazyFunc(args[0](self)).</span>
 
-<span class="sd">        When calling a LazyFunc instance, if the first argument is NOT a callable, it behaves exactly as the unwrapped</span>
-<span class="sd">        callable.</span>
+<span class="sd">        When calling a LazyFunc instance, if the first argument is NOT a callable, it</span>
+<span class="sd">        behaves exactly as the unwrapped callable.</span>
+
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; @LazyFunc</span>
 <span class="sd">            ... def my_function(x):</span>
@@ -883,7 +915,8 @@ including LazyFunc instances.</p>
 <span class="sd">            &gt;&gt;&gt; min = LazyFunc(min)</span>
 <span class="sd">            &gt;&gt;&gt; min([3, 1, 4, 1, 5, 9])  # first argument is not callable</span>
 <span class="sd">            1</span>
-<span class="sd">            &gt;&gt;&gt; min(&#39;lazy&#39;, &#39;function&#39;, key=lambda s: s[1])  # first argument is not callable</span>
+<span class="sd">            &gt;&gt;&gt; min(&#39;lazy&#39;, &#39;function&#39;, key=lambda s: s[1])  # first argument is</span>
+<span class="sd">            ...                                              # not callable</span>
 <span class="sd">            &#39;lazy&#39;</span>
 <span class="sd">            &gt;&gt;&gt; min_of_my_function = min(my_function)  # first argument is callable</span>
 <span class="sd">            &gt;&gt;&gt; min_of_my_function</span>
@@ -893,27 +926,47 @@ including LazyFunc instances.</p>
 <span class="sd">            args: Positional arguments to be passed to wrapped function.</span>
 <span class="sd">            kwargs: Keyword arguments to be passed to wrapped function.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            Either the result of the wrapped function evaluated with the supplied args and kwargs, or a new LazyFunc</span>
-<span class="sd">            instance.</span>
+<span class="sd">        Returns: Either the result of the wrapped function evaluated with the</span>
+<span class="sd">        supplied args and _kwargs, or a new LazyFunc instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="n">operator_precedence</span> <span class="o">=</span> <span class="mi">17</span>
             <span class="n">other_func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
-            <span class="n">new_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">y</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">other_func</span><span class="p">(</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="n">new_desc</span> <span class="o">=</span> <span class="n">_get_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_precedence</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="n">callable_name</span><span class="p">(</span><span class="n">other_func</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+
+            <span class="k">def</span> <span class="nf">new_func</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">other_func</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+            <span class="n">new_desc</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">_get_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_precedence</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot;(&quot;</span>
+                <span class="o">+</span> <span class="n">callable_name</span><span class="p">(</span><span class="n">other_func</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+            <span class="p">)</span>
             <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
             <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator_precedence</span>
             <span class="k">return</span> <span class="n">mf</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># when the function is called the kwargs supplied to the call take</span>
+            <span class="c1"># precedence over those set elsewhere</span>
+            <span class="n">final_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">|</span> <span class="n">kwargs</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">final_kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">is_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">set_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_kwargs</span>
+
+    <span class="k">def</span> <span class="nf">is_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks for equality between self and other.</span>
 
-<span class="sd">        To stay consistent with LazyFunc&#39;s other dunder methods, the `__eq__` method lazily compares equality</span>
-<span class="sd">        between the wrapped LazyFunc and other. Therefore, this method exists to check whether two unevaluated</span>
-<span class="sd">        LazyFunc objects are equal, without calling them and comparing the results.</span>
+<span class="sd">        To stay consistent with LazyFunc&#39;s other dunder methods, the `__eq__` method</span>
+<span class="sd">        lazily compares equality between the wrapped LazyFunc and other. Therefore,</span>
+<span class="sd">        this method exists to check whether two unevaluated LazyFunc objects are</span>
+<span class="sd">        equal, without calling them and comparing the results.</span>
 
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; def my_function(x):</span>
@@ -929,11 +982,14 @@ including LazyFunc instances.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">equal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">description</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Can only compare a LazyFunc instance with another LazyFunc&#39;</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Can only compare a LazyFunc instance with another LazyFunc&quot;</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">equal</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;LazyFunc descriptions found to be not equal though may still be equivalent.&#39;</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot;LazyFunc descriptions found to be not equal though may still be &quot;</span>
+                <span class="s2">&quot;equivalent. &quot;</span>
+            <span class="p">)</span>
             <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">equal</span>
@@ -943,6 +999,7 @@ including LazyFunc instances.</p>
 
 
   <div class="doc doc-children">
+
 
 
 
@@ -965,8 +1022,9 @@ including LazyFunc instances.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Defaults to the name of the wrapped callable, but can be set by the user at object initialisation. Also
-updated when operations are applied with other callables.</p>
+      <p>Defaults to the name of the wrapped callable, but can be set by the user at
+object initialisation. Also updated when operations are applied with other
+callables.</p>
 
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1022,8 +1080,11 @@ updated when operations are applied with other callables.</p>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1055,8 +1116,11 @@ updated when operations are applied with other callables.</p>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1083,10 +1147,11 @@ updated when operations are applied with other callables.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Either calls the wrapped function with the provided args and kwargs, or if the first argument is a callable,
-returns a new LazyFunc object of LazyFunc(args<a href="self">0</a>).</p>
-<p>When calling a LazyFunc instance, if the first argument is NOT a callable, it behaves exactly as the unwrapped
-callable.</p>
+      <p>Either calls the wrapped function with the provided args and kwargs, or if
+the first argument is a callable, returns a new LazyFunc object of
+LazyFunc(args<a href="self">0</a>).</p>
+<p>When calling a LazyFunc instance, if the first argument is NOT a callable, it
+behaves exactly as the unwrapped callable.</p>
 
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nd">@LazyFunc</span>
@@ -1100,7 +1165,8 @@ callable.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>  <span class="c1"># first argument is not callable</span>
 <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="s1">&#39;lazy&#39;</span><span class="p">,</span> <span class="s1">&#39;function&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># first argument is not callable</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="s1">&#39;lazy&#39;</span><span class="p">,</span> <span class="s1">&#39;function&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># first argument is</span>
+<span class="o">...</span>                                              <span class="c1"># not callable</span>
 <span class="s1">&#39;lazy&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">min_of_my_function</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">my_function</span><span class="p">)</span>  <span class="c1"># first argument is callable</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">min_of_my_function</span>
@@ -1131,31 +1197,19 @@ callable.</p>
         <td><code>{}</code></td>
       </tr>
   </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>object</code></td>
-      <td><p>Either the result of the wrapped function evaluated with the supplied args and kwargs, or a new LazyFunc
-instance.</p></td>
-    </tr>
-  </tbody>
-</table>
+</table>      <p>Returns: Either the result of the wrapped function evaluated with the
+supplied args and _kwargs, or a new LazyFunc instance.</p>
+
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Either calls the wrapped function with the provided args and kwargs, or if the first argument is a callable,</span>
-<span class="sd">    returns a new LazyFunc object of LazyFunc(args[0](self)).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Either calls the wrapped function with the provided args and kwargs, or if</span>
+<span class="sd">    the first argument is a callable, returns a new LazyFunc object of</span>
+<span class="sd">    LazyFunc(args[0](self)).</span>
 
-<span class="sd">    When calling a LazyFunc instance, if the first argument is NOT a callable, it behaves exactly as the unwrapped</span>
-<span class="sd">    callable.</span>
+<span class="sd">    When calling a LazyFunc instance, if the first argument is NOT a callable, it</span>
+<span class="sd">    behaves exactly as the unwrapped callable.</span>
+
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; @LazyFunc</span>
 <span class="sd">        ... def my_function(x):</span>
@@ -1168,7 +1222,8 @@ instance.</p></td>
 <span class="sd">        &gt;&gt;&gt; min = LazyFunc(min)</span>
 <span class="sd">        &gt;&gt;&gt; min([3, 1, 4, 1, 5, 9])  # first argument is not callable</span>
 <span class="sd">        1</span>
-<span class="sd">        &gt;&gt;&gt; min(&#39;lazy&#39;, &#39;function&#39;, key=lambda s: s[1])  # first argument is not callable</span>
+<span class="sd">        &gt;&gt;&gt; min(&#39;lazy&#39;, &#39;function&#39;, key=lambda s: s[1])  # first argument is</span>
+<span class="sd">        ...                                              # not callable</span>
 <span class="sd">        &#39;lazy&#39;</span>
 <span class="sd">        &gt;&gt;&gt; min_of_my_function = min(my_function)  # first argument is callable</span>
 <span class="sd">        &gt;&gt;&gt; min_of_my_function</span>
@@ -1178,25 +1233,35 @@ instance.</p></td>
 <span class="sd">        args: Positional arguments to be passed to wrapped function.</span>
 <span class="sd">        kwargs: Keyword arguments to be passed to wrapped function.</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        Either the result of the wrapped function evaluated with the supplied args and kwargs, or a new LazyFunc</span>
-<span class="sd">        instance.</span>
+<span class="sd">    Returns: Either the result of the wrapped function evaluated with the</span>
+<span class="sd">    supplied args and _kwargs, or a new LazyFunc instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
         <span class="n">operator_precedence</span> <span class="o">=</span> <span class="mi">17</span>
         <span class="n">other_func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
-        <span class="n">new_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">y</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">other_func</span><span class="p">(</span><span class="o">*</span><span class="n">y</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">new_desc</span> <span class="o">=</span> <span class="n">_get_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_precedence</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="n">callable_name</span><span class="p">(</span><span class="n">other_func</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+
+        <span class="k">def</span> <span class="nf">new_func</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">other_func</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">new_desc</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">_get_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_precedence</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot;(&quot;</span>
+            <span class="o">+</span> <span class="n">callable_name</span><span class="p">(</span><span class="n">other_func</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+        <span class="p">)</span>
         <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
         <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator_precedence</span>
         <span class="k">return</span> <span class="n">mf</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># when the function is called the kwargs supplied to the call take</span>
+        <span class="c1"># precedence over those set elsewhere</span>
+        <span class="n">final_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">|</span> <span class="n">kwargs</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">final_kwargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
 
   </div>
+
 
 
 
@@ -1220,8 +1285,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1230,6 +1298,7 @@ instance.</p></td>
     </div>
 
   </div>
+
 
 
 
@@ -1253,8 +1322,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1286,8 +1358,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1319,8 +1394,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1353,8 +1431,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1386,8 +1467,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1419,8 +1503,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1452,8 +1539,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1485,8 +1575,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1518,8 +1611,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1551,8 +1647,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1584,8 +1683,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1617,8 +1719,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1650,8 +1755,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1683,8 +1791,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1716,8 +1827,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1749,8 +1863,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1782,8 +1899,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1816,8 +1936,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1849,8 +1972,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1882,8 +2008,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1915,8 +2044,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1948,8 +2080,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -1981,8 +2116,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2014,8 +2152,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2047,8 +2188,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2080,8 +2224,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2113,8 +2260,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2146,8 +2296,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2179,8 +2332,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2212,8 +2368,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2245,8 +2404,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2278,8 +2440,11 @@ instance.</p></td>
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">instances</span><span class="p">):</span>
-    <span class="n">new_func</span> <span class="o">=</span> <span class="n">function_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
-    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">description_from_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+    <span class="n">new_func</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">build_new_signature</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">new_desc</span> <span class="o">=</span> <span class="n">LazyFuncMeta</span><span class="o">.</span><span class="n">description_from_operator</span><span class="p">(</span>
+        <span class="n">operator</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span>
+    <span class="p">)</span>
     <span class="n">mf</span> <span class="o">=</span> <span class="n">LazyFunc</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">new_func</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">new_desc</span><span class="p">)</span>
     <span class="n">mf</span><span class="o">.</span><span class="n">_precedence</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">precedence</span>
     <span class="k">return</span> <span class="n">mf</span>
@@ -2304,9 +2469,10 @@ instance.</p></td>
     <div class="doc doc-contents ">
 
       <p>Checks for equality between self and other.</p>
-<p>To stay consistent with LazyFunc's other dunder methods, the <code>__eq__</code> method lazily compares equality
-between the wrapped LazyFunc and other. Therefore, this method exists to check whether two unevaluated
-LazyFunc objects are equal, without calling them and comparing the results.</p>
+<p>To stay consistent with LazyFunc's other dunder methods, the <code>__eq__</code> method
+lazily compares equality between the wrapped LazyFunc and other. Therefore,
+this method exists to check whether two unevaluated LazyFunc objects are
+equal, without calling them and comparing the results.</p>
 
 <p><strong>Examples:</strong></p>
     <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -2322,12 +2488,13 @@ LazyFunc objects are equal, without calling them and comparing the results.</p>
 
         <details class="quote">
           <summary>Source code in <code>lazyfunc/lazy_func.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks for equality between self and other.</span>
 
-<span class="sd">    To stay consistent with LazyFunc&#39;s other dunder methods, the `__eq__` method lazily compares equality</span>
-<span class="sd">    between the wrapped LazyFunc and other. Therefore, this method exists to check whether two unevaluated</span>
-<span class="sd">    LazyFunc objects are equal, without calling them and comparing the results.</span>
+<span class="sd">    To stay consistent with LazyFunc&#39;s other dunder methods, the `__eq__` method</span>
+<span class="sd">    lazily compares equality between the wrapped LazyFunc and other. Therefore,</span>
+<span class="sd">    this method exists to check whether two unevaluated LazyFunc objects are</span>
+<span class="sd">    equal, without calling them and comparing the results.</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; def my_function(x):</span>
@@ -2343,11 +2510,14 @@ LazyFunc objects are equal, without calling them and comparing the results.</p>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">equal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">description</span>
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Can only compare a LazyFunc instance with another LazyFunc&#39;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Can only compare a LazyFunc instance with another LazyFunc&quot;</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">equal</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;LazyFunc descriptions found to be not equal though may still be equivalent.&#39;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;LazyFunc descriptions found to be not equal though may still be &quot;</span>
+            <span class="s2">&quot;equivalent. &quot;</span>
+        <span class="p">)</span>
         <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">equal</span>
@@ -2361,11 +2531,21 @@ LazyFunc objects are equal, without calling them and comparing the results.</p>
 
 
 
+
   </div>
 
     </div>
 
   </div>
+
+<h3 id="no-inplace-operators">No inplace operators.</h3>
+<p>Note that there are no inplace operators available. This is because to do so requires
+a new function to be created that depends on <code>self</code>,
+which is then assigned to <code>self</code>. This is a problem because the wrapped functions are passed by reference rather
+than by value, thus creating an infinite loop. One solution would be to create a copy of the old <code>self</code>, however this uses the same amount of
+memory as the non-inplace operation defeating the point. An alternative would be to simply call the non-inplace
+operation with the inplace syntax, however this would then be misleading. As a result inplace operations are not
+implemented for LazyFunc objects.</p>
 
 
 
@@ -2403,10 +2583,10 @@ LazyFunc objects are equal, without calling them and comparing the results.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.51d95adb.min.js"></script>
+      <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
       
     
   </body>

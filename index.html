@@ -13,7 +13,7 @@
         <link rel="next" href="reference/">
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
@@ -21,10 +21,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.558e4712.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.2505c338.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lazyfunc" class="md-skip">
+        <a href="#installation" class="md-skip">
           Skip to content
         </a>
       
@@ -79,7 +79,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="lazyfunc" class="md-header__button md-logo" aria-label="lazyfunc" data-md-component="logo">
       
@@ -156,10 +158,8 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-      
-        
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -177,8 +177,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -187,8 +185,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#documentation" class="md-nav__link">
-    Documentation
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>
   
 </li>
@@ -201,8 +199,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
+  <a href="#contributing" class="md-nav__link">
+    Contributing
   </a>
   
 </li>
@@ -230,21 +228,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="explanation/" class="md-nav__link">
-        Explanation
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -262,8 +245,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -272,8 +253,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#documentation" class="md-nav__link">
-    Documentation
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>
   
 </li>
@@ -286,8 +267,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
+  <a href="#contributing" class="md-nav__link">
+    Contributing
   </a>
   
 </li>
@@ -307,24 +288,35 @@
                   
 
 
+<h1 align="center">lazyfunc</h1>
 
-<h1 id="lazyfunc">lazyfunc</h1>
-<p><a href="https://pypi.org/project/lazyfunc"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/lazyfunc.svg" /></a>
-<a href="https://pypi.org/project/lazyfunc"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/lazyfunc.svg" /></a></p>
-<p>Wrapper for callables in Python, enabling many operations between them, with lazy evaluation.</p>
+<p align="center">Operations between callables, with <a href="https://en.wikipedia.org/wiki/Lazy_evaluation">lazy evaluation</a>.</p>
+
+<p align="center">
+  <a href="https://github.com/josh-read/lazyfunc/actions/workflows/ci.yml"><img
+    src="https://img.shields.io/github/actions/workflow/status/josh-read/lazyfunc/ci.yml?label=ci"
+    alt="ci"
+  /></a>
+  <a href="https://josh-read.github.io/lazyfunc/"><img
+    src="https://img.shields.io/badge/docs-mkdocs-blue" 
+    alt="docs"
+  /></a>
+  <a href="https://pypi.org/project/lazyfunc/"><img
+    src="https://img.shields.io/pypi/v/lazyfunc" 
+    alt="pypi"
+  /></a>
+</p>
+
 <hr />
-<p><strong>Table of Contents</strong></p>
-<ul>
-<li><a href="#documentation">Documentation</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#installation">Installation</a></li>
-</ul>
-<h2 id="documentation">Documentation</h2>
-<p>For documentation, visit <a href="https://josh-read.github.io/lazyfunc/">https://josh-read.github.io/lazyfunc/</a>.</p>
+<h2 id="installation">Installation</h2>
+<p>To install lazyfunc, use <a href="https://pip.pypa.io/">pip</a> to install the
+latest version from PyPI.</p>
+<pre><code class="language-commandline">$ pip install lazyfunc
+</code></pre>
 <h2 id="usage">Usage</h2>
-<p>Below is an example using <code>lazyfunc</code>. While not the most motivating example, it illustrates how function evaluation can
-be deferred until after the final function is constructed. A real example of when this can be advantageous is for
-performing operations between interpolated functions without losing precision.</p>
+<p>Below is a short demo of <code>lazyfunc</code>. <a href="https://josh-read.github.io/lazyfunc/reference/">Arbitrary operations</a>
+can be applied to the functions, even between each other. Function evaluation can
+be deferred until after the final function is constructed.</p>
 <pre><code class="language-python">&gt;&gt;&gt; from lazyfunc import LazyFunc
 
 &gt;&gt;&gt; @LazyFunc
@@ -343,9 +335,9 @@ LazyFunc(f * (g + 2) ** 2)
 True
 
 </code></pre>
-<h2 id="installation">Installation</h2>
-<pre><code class="language-console">pip install lazyfunc
-</code></pre>
+<p>See the <a href="https://github.com/josh-read/lazyfunc/blob/main/examples/photometrics/main.py">example</a> for a more motivating use case.</p>
+<h2 id="contributing">Contributing</h2>
+<p>All contributions are welcome! Please raise an issue or make a pull request.</p>
 
 
 
@@ -383,10 +375,10 @@ True
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.51d95adb.min.js"></script>
+      <script src="assets/javascripts/bundle.51198bba.min.js"></script>
       
     
   </body>
