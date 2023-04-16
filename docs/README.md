@@ -1,6 +1,6 @@
 <h1 align="center">lazyfunc</h1>
 
-<p align="center">Wrapper for callables in Python, enabling many operations between them, with lazy evaluation.</p>
+<p align="center">Operations between callables, with lazy evaluation.</p>
 
 <p align="center">
   <a href="https://github.com/josh-read/lazyfunc/actions/workflows/ci.yml"><img

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lazyfunc"
-description = "Wrapper for callables in Python, enabling many operations between them, with lazy evaluation."
+description = "Operations between callables, with lazy evaluation."
 readme = "README.md"
 requires-python = ">=3.9"
 license = {file = "LICENSE.txt"}
