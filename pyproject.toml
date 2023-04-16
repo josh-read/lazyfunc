@@ -41,19 +41,21 @@ examples = [
   "scipy",
   "matplotlib",
 ]
+dev = [
+  "pytest",
+  "numpy",
+  "black",
+  "flake8"
+]
 docs = [
   "mkdocs",
   "mkdocstrings-python-legacy",
   "mkdocs-material",
 ]
-tests = [
-  "pytest",
-  "numpy",
-]
 all = [
   "lazyfunc[examples]",
+  "lazyfunc[dev]",
   "lazyfunc[docs]",
-  "lazyfunc[tests]",
 ]
 
 [tool.coverage.run]
