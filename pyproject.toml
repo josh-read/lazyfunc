@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "lazyfunc"
 description = "Operations between callables, with lazy evaluation."
-readme = "README.md"
+readme = "docs/README.md"
 requires-python = ">=3.9"
 license = {file = "LICENSE.txt"}
 keywords = []
