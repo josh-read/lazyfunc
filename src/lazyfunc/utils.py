@@ -1,5 +1,6 @@
 def callable_name(func):
-    """Return the name of any callable, regardless of whether it is a function or class."""
+    """Return the name of any callable, regardless of whether it is a function or
+    class."""
     try:
         return func.__name__
     except AttributeError:

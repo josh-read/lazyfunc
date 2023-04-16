@@ -43,7 +43,8 @@ class LazyFuncMeta(type):
         inner.__name__ = operator.name
         inner.__doc__ = (
             f"Return new instance LazyFunc({operation_description}), "
-            "where other may be a scalar value or any other callable including another LazyFunc instance."
+            "where other may be a scalar value or any other callable "
+            "including another LazyFunc instance."
         )
         return inner
 
@@ -66,9 +67,10 @@ class LazyFuncMeta(type):
 
     @staticmethod
     def description_from_operator(operator, *instances, reverse):
-        """Returns a string describing the function resulting from combining self and other through
-        the specified operation. The precedence of the operation is compared to the precedence of the last operation
-        on self and other to determine whether parentheses are required."""
+        """Returns a string describing the function resulting from combining self and
+        other through the specified operation. The precedence of the operation is
+        compared to the precedence of the last operation on self and other to determine
+        whether parentheses are required."""
         descriptions = [
             LazyFuncMeta._get_desc(instance, operator.precedence)
             for instance in instances
@@ -112,7 +114,8 @@ class LazyFuncMeta(type):
                     params
                 ) in (
                     instance_parameters
-                ):  # arguments of same kind from first instance come before last instance
+                ):  # arguments of same kind from first instance come before last
+                    # instance
                     for name, param in params.items():
                         if param.kind == kind and name not in combined_params:
                             combined_params[name] = param
@@ -120,8 +123,8 @@ class LazyFuncMeta(type):
 
 
 class LazyFunc(metaclass=LazyFuncMeta):
-    """Wrap a callable object enabling arithmetic operations between it and scalar values or any other callables,
-    including LazyFunc instances."""
+    """Wrap a callable object enabling arithmetic operations between it and scalar
+    values or any other callables, including LazyFunc instances."""
 
     def __init__(self, func, description=None, **kwargs):
         self.func = func
@@ -135,8 +138,9 @@ class LazyFunc(metaclass=LazyFuncMeta):
 
     @property
     def description(self) -> str:
-        """Defaults to the name of the wrapped callable, but can be set by the user at object initialisation. Also
-        updated when operations are applied with other callables.
+        """Defaults to the name of the wrapped callable, but can be set by the user at
+        object initialisation. Also updated when operations are applied with other
+        callables.
 
         Examples:
             >>> def my_function(x):
@@ -165,11 +169,13 @@ class LazyFunc(metaclass=LazyFuncMeta):
         return f"{self.__class__.__name__}({self.description})"
 
     def __call__(self, *args, **kwargs) -> object:
-        """Either calls the wrapped function with the provided args and kwargs, or if the first argument is a callable,
-        returns a new LazyFunc object of LazyFunc(args[0](self)).
+        """Either calls the wrapped function with the provided args and kwargs, or if
+        the first argument is a callable, returns a new LazyFunc object of
+        LazyFunc(args[0](self)).
 
-        When calling a LazyFunc instance, if the first argument is NOT a callable, it behaves exactly as the unwrapped
-        callable.
+        When calling a LazyFunc instance, if the first argument is NOT a callable, it
+        behaves exactly as the unwrapped callable.
+
         Examples:
             >>> @LazyFunc
             ... def my_function(x):
@@ -182,7 +188,8 @@ class LazyFunc(metaclass=LazyFuncMeta):
             >>> min = LazyFunc(min)
             >>> min([3, 1, 4, 1, 5, 9])  # first argument is not callable
             1
-            >>> min('lazy', 'function', key=lambda s: s[1])  # first argument is not callable
+            >>> min('lazy', 'function', key=lambda s: s[1])  # first argument is
+            ...                                              # not callable
             'lazy'
             >>> min_of_my_function = min(my_function)  # first argument is callable
             >>> min_of_my_function
@@ -192,14 +199,16 @@ class LazyFunc(metaclass=LazyFuncMeta):
             args: Positional arguments to be passed to wrapped function.
             kwargs: Keyword arguments to be passed to wrapped function.
 
-        Returns:
-            Either the result of the wrapped function evaluated with the supplied args and _kwargs, or a new LazyFunc
-            instance.
+        Returns: Either the result of the wrapped function evaluated with the
+        supplied args and _kwargs, or a new LazyFunc instance.
         """
         if callable(args[0]):
             operator_precedence = 17
             other_func, *args = args
-            new_func = lambda *y: self.func(other_func(*y), *args, **kwargs)
+
+            def new_func(*x):
+                return self.func(other_func(*x), *args, **kwargs)
+
             new_desc = (
                 LazyFuncMeta._get_desc(self, operator_precedence)
                 + "("
@@ -209,7 +218,8 @@ class LazyFunc(metaclass=LazyFuncMeta):
             mf = LazyFunc(func=new_func, description=new_desc)
             mf._precedence = operator_precedence
             return mf
-        else:  # when the function is called the kwargs supplied to the call take precedence over those set elsewhere
+        else:  # when the function is called the kwargs supplied to the call take
+            # precedence over those set elsewhere
             final_kwargs = self._kwargs | kwargs
             return self.func(*args, **final_kwargs)
 
@@ -226,9 +236,10 @@ class LazyFunc(metaclass=LazyFuncMeta):
     def is_equal(self, other: callable) -> bool:
         """Checks for equality between self and other.
 
-        To stay consistent with LazyFunc's other dunder methods, the `__eq__` method lazily compares equality
-        between the wrapped LazyFunc and other. Therefore, this method exists to check whether two unevaluated
-        LazyFunc objects are equal, without calling them and comparing the results.
+        To stay consistent with LazyFunc's other dunder methods, the `__eq__` method
+        lazily compares equality between the wrapped LazyFunc and other. Therefore,
+        this method exists to check whether two unevaluated LazyFunc objects are
+        equal, without calling them and comparing the results.
 
         Examples:
             >>> def my_function(x):
@@ -248,7 +259,10 @@ class LazyFunc(metaclass=LazyFuncMeta):
             raise TypeError(msg)
 
         if not equal:
-            msg = "LazyFunc descriptions found to be not equal though may still be equivalent."
+            msg = (
+                "LazyFunc descriptions found to be not equal though may still be "
+                "equivalent. "
+            )
             warn(msg)
 
         return equal

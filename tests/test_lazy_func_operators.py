@@ -46,7 +46,8 @@ def test_mul():
     assert LazyFunc.__mul__.__name__ == "__mul__"
     assert (
         LazyFunc.__mul__.__doc__
-        == "Return new instance LazyFunc(self * other), where other may be a scalar value or any other callable including another LazyFunc instance."
+        == "Return new instance LazyFunc(self * other), where other may be a scalar "
+        "value or any other callable including another LazyFunc instance.".strip("\n")
     )
 
 

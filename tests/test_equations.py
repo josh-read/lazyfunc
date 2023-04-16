@@ -1,5 +1,5 @@
-"""Test that combining operations of different precedence returns the correct result and also has the
-correct placement of parentheses in the description."""
+"""Test that combining operations of different precedence returns the correct result
+and also has the correct placement of parentheses in the description."""
 
 import pytest
 
@@ -45,8 +45,8 @@ def three(x):
         "1 + 1 == 2",
         "1 + 1 > 2",
         "1 + (1 > 2)",
-        "(1 < 2) & (2 < 3)",  # comparators cannot be chained (similar to numpy bool arrays)
-    ],
+        "(1 < 2) & (2 < 3)",  # comparators cannot be chained (similar to numpy bool
+    ],  # arrays)
 )
 def test_equation(equation):
     equation_from_math_funcs = (
