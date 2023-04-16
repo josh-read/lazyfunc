@@ -19,21 +19,20 @@
 
 ---
 
-**Table of Contents**
+## Installation
 
-- [Documentation](#documentation)
-- [Usage](#usage)
-- [Installation](#installation)
+To install lazyfunc, use [pip](https://pip.pypa.io/) to install the
+latest version from PyPI.
 
-## Documentation
-
-For documentation, visit [https://josh-read.github.io/lazyfunc/](https://josh-read.github.io/lazyfunc/).
+```commandline
+$ pip install lazyfunc
+```
 
 ## Usage
 
-Below is an example using `lazyfunc`. While not the most motivating example, it illustrates how function evaluation can
-be deferred until after the final function is constructed. A real example of when this can be advantageous is for
-performing operations between interpolated functions without losing precision.
+Below is a short demo of `lazyfunc`. Arbitrary operations can be
+applied to the functions, even between each other. Function evaluation can
+be deferred until after the final function is constructed.
 
 ```python
 >>> from lazyfunc import LazyFunc
@@ -55,8 +54,8 @@ True
 
 ```
 
-## Installation
+See the [example](https://github.com/josh-read/lazyfunc/blob/main/examples/photometrics/main.py) for a more motivating use case.
 
-```console
-pip install lazyfunc
-```
+## Contributing
+
+All contributions are welcome! Please raise an issue or make a pull request.
