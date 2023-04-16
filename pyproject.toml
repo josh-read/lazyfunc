@@ -45,7 +45,8 @@ dev = [
   "pytest",
   "numpy",
   "black",
-  "flake8"
+  "flake8",
+  "pre-commit",
 ]
 docs = [
   "mkdocs",
