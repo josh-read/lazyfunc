@@ -3,7 +3,7 @@ from warnings import warn
 
 from lazyfunc.arguments import ARGUMENT_ORDER
 from lazyfunc.operators import operators
-from lazyfunc.utils import callable_name, add_parentheses, insert
+from lazyfunc.utils import add_parentheses, callable_name, insert
 
 
 class LazyFuncMeta(type):

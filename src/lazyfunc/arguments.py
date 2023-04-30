@@ -1,6 +1,5 @@
 import inspect
 
-
 ARGUMENT_ORDER = [
     inspect.Parameter.POSITIONAL_ONLY,
     inspect.Parameter.POSITIONAL_OR_KEYWORD,
