@@ -43,6 +43,7 @@ examples = [
 ]
 dev = [
   "pytest",
+  "pytest-cov",
   "numpy",
   "black",
   "flake8",
@@ -57,18 +58,4 @@ all = [
   "lazyfunc[examples]",
   "lazyfunc[dev]",
   "lazyfunc[docs]",
-]
-
-[tool.coverage.run]
-branch = true
-parallel = true
-omit = [
-  "src/lazyfunc/__about__.py",
-]
-
-[tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
 ]
