@@ -15,6 +15,10 @@
     src="https://img.shields.io/pypi/v/lazyfunc" 
     alt="pypi"
   /></a>
+  <a href="https://codecov.io/gh/josh-read/lazyfunc"><img
+    src="https://codecov.io/gh/josh-read/lazyfunc/branch/main/graph/badge.svg?token=NPHWZRHO4C"
+    alt="codecov"
+  /></a>
 </p>
 
 ---
