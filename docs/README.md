@@ -8,11 +8,11 @@
     alt="ci"
   /></a>
   <a href="https://josh-read.github.io/lazyfunc/"><img
-    src="https://img.shields.io/badge/docs-mkdocs-blue" 
+    src="https://img.shields.io/badge/docs-mkdocs-blue"
     alt="docs"
   /></a>
   <a href="https://pypi.org/project/lazyfunc/"><img
-    src="https://img.shields.io/pypi/v/lazyfunc" 
+    src="https://img.shields.io/pypi/v/lazyfunc"
     alt="pypi"
   /></a>
   <a href="https://codecov.io/gh/josh-read/lazyfunc"><img
@@ -21,12 +21,13 @@
   /></a>
 </p>
 
----
+______________________________________________________________________
 
 ## Installation
 
-To install lazyfunc, use [pip](https://pip.pypa.io/) to install the
-latest version from PyPI.
+To install lazyfunc,
+use [pip](https://pip.pypa.io/)
+to install the latest version from PyPI.
 
 ```commandline
 $ pip install lazyfunc
@@ -34,9 +35,12 @@ $ pip install lazyfunc
 
 ## Usage
 
-Below is a short demo of `lazyfunc`. [Arbitrary operations](https://josh-read.github.io/lazyfunc/reference/)
-can be applied to the functions, even between each other. Function evaluation can
-be deferred until after the final function is constructed.
+Below is a short demo of `lazyfunc`.
+[Arbitrary operations](https://josh-read.github.io/lazyfunc/reference/)
+can be applied to the functions
+and even between each other.
+Function evaluation is deferred
+until after the final function is constructed.
 
 ```python
 >>> from lazyfunc import LazyFunc
@@ -58,8 +62,10 @@ True
 
 ```
 
-See the [example](https://github.com/josh-read/lazyfunc/blob/main/examples/photometrics/main.py) for a more motivating use case.
+See the [example](https://github.com/josh-read/lazyfunc/blob/main/examples/photometrics/main.py)
+for a more motivating use case.
 
 ## Contributing
 
-All contributions are welcome! Please raise an issue or make a pull request.
+All contributions are welcome!
+Please raise an issue or make a pull request.
