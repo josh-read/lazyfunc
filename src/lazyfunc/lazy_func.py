@@ -19,8 +19,8 @@ class LazyFuncMeta(type):
 
     @staticmethod
     def lazy_func_method_factory(operator, reverse=False):
-        """Function factory which produces the functions for operations which are bound
-        to LazyFunc."""
+        """Function factory which produces the functions for operations which
+        are bound to LazyFunc."""
 
         def inner(*instances):
             new_func = LazyFuncMeta.new_function(operator, *instances)
@@ -67,10 +67,13 @@ class LazyFuncMeta(type):
 
     @staticmethod
     def description_from_operator(operator, *instances, reverse):
-        """Returns a string describing the function resulting from combining self and
-        other through the specified operation. The precedence of the operation is
-        compared to the precedence of the last operation on self and other to determine
-        whether parentheses are required."""
+        """Returns a string describing the function resulting from combining
+        self and other through the specified operation.
+
+        The precedence of the operation is compared to the precedence of
+        the last operation on self and other to determine whether
+        parentheses are required.
+        """
         descriptions = [
             LazyFuncMeta._get_desc(instance, operator.precedence)
             for instance in instances
@@ -137,9 +140,9 @@ class LazyFunc(metaclass=LazyFuncMeta):
 
     @property
     def description(self) -> str:
-        """Defaults to the name of the wrapped callable, but can be set by the user at
-        object initialisation. Also updated when operations are applied with other
-        callables.
+        """Defaults to the name of the wrapped callable, but can be set by the
+        user at object initialisation. Also updated when operations are applied
+        with other callables.
 
         Examples:
             >>> def my_function(x):
@@ -168,9 +171,9 @@ class LazyFunc(metaclass=LazyFuncMeta):
         return f"{self.__class__.__name__}({self.description})"
 
     def __call__(self, *args, **kwargs) -> object:
-        """Either calls the wrapped function with the provided args and kwargs, or if
-        the first argument is a callable, returns a new LazyFunc object of
-        LazyFunc(args[0](self)).
+        """Either calls the wrapped function with the provided args and kwargs,
+        or if the first argument is a callable, returns a new LazyFunc object
+        of LazyFunc(args[0](self)).
 
         When calling a LazyFunc instance, if the first argument is NOT a callable, it
         behaves exactly as the unwrapped callable.
