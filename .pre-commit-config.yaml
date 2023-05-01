@@ -17,3 +17,9 @@ repos:
     rev: 6.0.0
     hooks:
       - id: flake8
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.16
+    hooks:
+    - id: mdformat
+      additional_dependencies:
+      - mdformat-black
