@@ -23,14 +23,10 @@ classifiers = [
 dependencies = []
 dynamic = ["version"]
 
-[tool.setuptools_scm]
-write_to = "src/_version.py"
-
 [project.urls]
 Documentation = "https://josh-read.github.io/lazyfunc/"
 Issues = "https://github.com/josh-read/lazyfunc/issues"
 Source = "https://github.com/josh-read/lazyfunc"
-
 
 [dirs.env]
 virtual = ".venv"
@@ -59,3 +55,9 @@ all = [
   "lazyfunc[dev]",
   "lazyfunc[docs]",
 ]
+
+[tool.setuptools_scm]
+write_to = "src/_version.py"
+
+[tool.isort]
+profile = "black"

@@ -1,8 +1,9 @@
 import inspect
 import operator
 from functools import cached_property
-from lazyfunc.utils import insert
 from string import ascii_lowercase
+
+from lazyfunc.utils import insert
 
 
 def has_dunder(name):
