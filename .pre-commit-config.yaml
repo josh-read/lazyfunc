@@ -23,3 +23,7 @@ repos:
     - id: mdformat
       additional_dependencies:
       - mdformat-black
+  - repo: https://github.com/PyCQA/docformatter
+    rev: v1.6.4
+    hooks:
+    - id: docformatter
